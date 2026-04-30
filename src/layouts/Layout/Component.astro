@@ -11,8 +11,6 @@ import { Icon } from 'astro-icon/components';
 import { Subheader } from '~/components/Subheader';
 import { Header } from '~/components/Header';
 
-
-
 type Props = {
   additionalSeo?: TitleMetaLinkTag[];
 };
@@ -39,7 +37,7 @@ const result = await executeQuery(query, { includeDrafts: draftModeEnabled });
 <BaseLayout seo={[...result._site.faviconMetaTags, ...additionalSeo]}>
   <Subheader />
 
-  <Header  />
+  <Header />
   <div id="site">
     <slot />
   </div>

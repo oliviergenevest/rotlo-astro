@@ -8,7 +8,7 @@
 
 <!--datocms-autoinclude-header end-->
 
-# Astro Starter Kit
+# Astro v6 Starter Kit
 
 This project aims to be a great starting point for your Astro projects that need to interact with DatoCMS.
 

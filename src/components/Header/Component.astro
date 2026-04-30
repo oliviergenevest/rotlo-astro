@@ -2,11 +2,10 @@
 import { NavigationMobile } from '~/components/NavigationMobile';
 import Hamburger from '../Hamburger.astro';
 import { Icon } from 'astro-icon/components';
-
 ---
 
 <div class="hidingHeader" id="hidingHeader">
-  <div class="header hidingHeader-in"  >
+  <div class="header hidingHeader-in">
     <a href="/" title="Page d'accueil">
       <Icon class="brandlogo" name="lesondupapier-logo" />
     </a>
@@ -46,24 +45,19 @@ import { Icon } from 'astro-icon/components';
 </style>
 
 <script>
-  
   import { hidingHeader } from 'hiding-header';
 
-
-  document.addEventListener("astro:page-load", () => {
+  document.addEventListener('astro:page-load', () => {
     const container = document.querySelector('#hidingHeader') as HTMLElement;
-      hidingHeader(container);
+    hidingHeader(container);
 
-      document.querySelector('.overlay')?.addEventListener('click', (e) => {
-        console.log("click");
-        e.preventDefault();
-        document.querySelector('.menu-icon')?.classList.toggle('is-opened');
-        document.querySelector('nav.mobile_nav')?.classList.toggle('expanded');
-        document.querySelector('html')?.classList.toggle('menu_open');
-        document.querySelector('body')?.classList.toggle('menu_open');
+    document.querySelector('.overlay')?.addEventListener('click', (e) => {
+      console.log('click');
+      e.preventDefault();
+      document.querySelector('.menu-icon')?.classList.toggle('is-opened');
+      document.querySelector('nav.mobile_nav')?.classList.toggle('expanded');
+      document.querySelector('html')?.classList.toggle('menu_open');
+      document.querySelector('body')?.classList.toggle('menu_open');
     });
-  
   });
-
-  
 </script>

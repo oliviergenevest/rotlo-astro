@@ -61,9 +61,9 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
 //console.log( "optimizedBgImage",optimizedBgImage.src);
 ---
 
-<Layout additionalSeo={homepage._seoMetaTags} >
-  <div class="section_cta" style={`--urlimg: url('${optimizedBgImage.src}');`}  >
-    <Wrapper> <div class="content fade-in-bottom" set:html={homepage.ctaText}  /></Wrapper>
+<Layout additionalSeo={homepage._seoMetaTags}>
+  <div class="section_cta" style={`--urlimg: url('${optimizedBgImage.src}');`}>
+    <Wrapper> <div class="content fade-in-bottom" set:html={homepage.ctaText} /></Wrapper>
   </div>
   <Wrapper class="wrapper homepage">
     {homepage.homepageSections.map((item) => <HomepageSectionBlock block={item} />)}
