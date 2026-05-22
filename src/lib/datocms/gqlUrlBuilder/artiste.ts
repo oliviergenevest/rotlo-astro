@@ -1,7 +1,5 @@
 import { graphql, readFragment, type FragmentOf } from '../graphql';
 
-
-
 export const ArtisteUrlFragment = graphql(/* GraphQL */ `
   fragment ArtisteUrlFragment on ArtisteRecord {
     slug
