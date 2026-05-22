@@ -10,7 +10,7 @@ const { as: Tag = 'div' as any, bgcolor, ...props } = Astro.props;
 
 const bgBlockColor = bgcolor;
 //console.log('bgBlockColor', bgBlockColor);
-console.log('wrapper component props', props);
+//console.log('wrapper component props', props);
 ---
 
 <Tag {...props} class="wrapper" style={`--color: ${bgBlockColor}`} {...props}>

@@ -3,15 +3,19 @@ import icon from 'astro-icon';
 import react from '@astrojs/react';
 import bundlesize from 'vite-plugin-bundlesize';
 
+import netlify from '@astrojs/netlify';
+
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://astro-starter.oliviergenevest.info',
+  site: 'https://cdo-astro.netlify.app',
   output: 'server',
   trailingSlash: 'never',
   base: '/',
+
   security: {
     checkOrigin: false,
   },
+
   vite: {
     plugins: [
       bundlesize({
@@ -23,6 +27,7 @@ export default defineConfig({
       sourcemap: 'hidden',
     },
   },
+
   env: {
     schema: {
       DRAFT_MODE_HOSTNAME: envField.string({
@@ -62,7 +67,9 @@ export default defineConfig({
     },
     validateSecrets: true,
   },
+
   site: 'https://http://localhost:4321',
+
   integrations: [
     react(),
     icon({
@@ -73,7 +80,10 @@ export default defineConfig({
       },
     }),
   ],
+
   image: {
     remotePatterns: [{ protocol: 'https' }],
   },
+
+  adapter: netlify(),
 });
