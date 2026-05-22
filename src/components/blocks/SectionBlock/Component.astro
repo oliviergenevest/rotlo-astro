@@ -19,8 +19,6 @@ import { ButtonsListBlock } from '~/components/blocks/ButtonsListBlock';
 import { LogosListBlock } from '~/components/blocks/LogosListBlock';
 //import { LogosListBlockFragment } from '~/components/blocks/LogosListBlock/fragments';
 
-
-
 import { SlideshowBlock } from '~/components/blocks/SlideshowBlock';
 //import { SlideshowBlockFragment } from '~/components/blocks/SlideshowBlock/fragments';
 import { PageInline } from '~/components/inlineRecord/PageInline';
@@ -36,8 +34,7 @@ import { Icon } from 'astro-icon/components';
 
 interface Props {
   block: FragmentOf<typeof SectionBlockFragment>;
- 
-  }
+}
 
 const { block } = Astro.props;
 
@@ -53,7 +50,6 @@ const SectionId = unmaskedBlock.sectionId;
 
 <div class:list={['sectionWrapper', { gradient: bgGradient }]} id={SectionId}>
   <div class:list={['grid', { 'two-columns': TwoColumnsLayout }]}>
-
     {
       /*
        * Structured Text is a JSON format similar to HTML, but with the advantage
@@ -101,7 +97,6 @@ const SectionId = unmaskedBlock.sectionId;
          * In this case, we want to tweak the way headings (h1-h6) are rendered.
          */ {
           // heading: HeadingWithAnchorLink,
- 
         }}
       />
     </div>
@@ -170,8 +165,8 @@ const SectionId = unmaskedBlock.sectionId;
     padding: 3.2rem 1.6rem;
     width: 100%;
     @media screen and (max-width: 748px) {
-     /* padding: 0;*/
-     padding: 1.6rem 0rem;
+      /* padding: 0;*/
+      padding: 1.6rem 0rem;
     }
     &.gradient {
       background: var(--og-gradient);

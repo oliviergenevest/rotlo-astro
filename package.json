@@ -10,7 +10,7 @@
     "preview": "astro preview",
     "astro": "astro",
     "generate-schema": "dotenv -c -- bash -c 'gql.tada generate schema https://graphql.datocms.com --header \"X-Exclude-Invalid: true\" --header \"Authorization: Bearer $DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN\"",
-    "generate-cma-types": "dotenv -c -- bash -c 'npx @datocms/cli schema:generate --api-token=$DATOCMS_CMA_TOKEN src/lib/datocms/cma-types.ts'",
+    "generate-cma-types": "dotenv -- npx @datocms/cli schema:generate --api-token=$DATOCMS_CMA_TOKEN src/lib/datocms/cma-types.ts",
     "lint": "prettier --check .",
     "format": "npx prettier . --write"
   },

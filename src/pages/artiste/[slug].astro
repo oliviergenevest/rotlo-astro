@@ -50,15 +50,14 @@ const query = graphql(
         description
         slug
         image {
-          responsiveImage { 
+          responsiveImage {
             ...ResponsiveImageFragment
           }
         }
-        
       }
     }
   `,
-  [TagFragment,ResponsiveImageFragment],
+  [TagFragment, ResponsiveImageFragment],
 );
 
 const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
@@ -76,15 +75,17 @@ if (!artiste) {
     statusText: 'Not found',
   });
 }
---- 
-
+---
 
 <Layout additionalSeo={artiste._seoMetaTags} backgroundColor="var(--color-cream)">
- <Wrapper class="wrapper wide">
-    <Title   transition:name={`title-${artiste.slug}`} class="title h1">{artiste.title}</Title>
-    <ResponsiveImage  transition:name={`image-${artiste.slug}`} data={artiste.image.responsiveImage} imgClass="rounded" />
-          <div class="artiste_description" set:html={artiste.description}/>
-
+  <Wrapper class="wrapper wide">
+    <Title transition:name={`title-${artiste.slug}`} class="title h1">{artiste.title}</Title>
+    <ResponsiveImage
+      transition:name={`image-${artiste.slug}`}
+      data={artiste.image.responsiveImage}
+      imgClass="rounded"
+    />
+    <div class="artiste_description" set:html={artiste.description} />
   </Wrapper>
 </Layout>
 
@@ -94,10 +95,10 @@ if (!artiste) {
   }
 
   .title {
-     font-size: rfs(56px);
-      line-height: rfs(66px);
-      max-width:700px;
-      hyphens:none;
+    font-size: rfs(56px);
+    line-height: rfs(66px);
+    max-width: 700px;
+    hyphens: none;
   }
 
   .title.h1 span :global(p) {
@@ -105,17 +106,12 @@ if (!artiste) {
     padding-bottom: 0;
   }
 
-.artiste_description {
-  color:white;
-  font-size: rfs(20px);
+  .artiste_description {
+    color: white;
+    font-size: rfs(20px);
     line-height: 66px;
-    max-width:600px;
-    font-weight:400;
-    padding:2rem;
-
-}
-
-
-
-
+    max-width: 600px;
+    font-weight: 400;
+    padding: 2rem;
+  }
 </style>

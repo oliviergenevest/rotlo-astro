@@ -43,7 +43,7 @@ const customClass = Astro.props.class;
     font-size: rfs(4.48rem);
     max-width: 100%;
   }
-[data-icon='ticket'] {
+  [data-icon='ticket'] {
     font-size: rfs(5.48rem);
     max-width: 100%;
   }
@@ -59,12 +59,14 @@ const customClass = Astro.props.class;
       padding: 16px 16px;
     }
 
-   &.transparent {
+    &.transparent {
       background-color: white;
-     
     }
   }
- .header .button_cta {padding-top:0;padding-bottom:0;}
+  .header .button_cta {
+    padding-top: 0;
+    padding-bottom: 0;
+  }
   @media screen and (max-width: 500px) {
     .header .button_cta {
       display: none;

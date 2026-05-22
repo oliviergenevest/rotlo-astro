@@ -61,19 +61,20 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
 //console.log( "optimizedBgImage",optimizedBgImage.src);
 ---
 
-<Layout additionalSeo={homepage._seoMetaTags} >
-  
-<!-- Fade transition with a duration of 400 milliseconds -->
-<div transition:animate={fade({ duration: '2.4s' })} >
-  <br>
-  TEST
-  <h1>sdgdfsgdfg dfhfghsgfhgsfh</h1>
-  <p>oihlskqwdfskdf sdlfhv hxldfh vlxdh ldfh vmsdfh mseihm wsdosid  eis ss eùes es ùoswe toswt psowj ù</p>
-  <br>
-
-</div>
+<Layout additionalSeo={homepage._seoMetaTags}>
+  <!-- Fade transition with a duration of 400 milliseconds -->
+  <div transition:animate={fade({ duration: '2.4s' })}>
+    <br />
+    TEST
+    <h1>sdgdfsgdfg dfhfghsgfhgsfh</h1>
+    <p>
+      oihlskqwdfskdf sdlfhv hxldfh vlxdh ldfh vmsdfh mseihm wsdosid eis ss eùes es ùoswe toswt psowj
+      ù
+    </p>
+    <br />
+  </div>
   <div class="section_cta" style={`--urlimg: url('${optimizedBgImage.src}');`}>
-    <Wrapper > <div class="content fade-in-bottom"  set:html={homepage.ctaText} /></Wrapper>
+    <Wrapper> <div class="content fade-in-bottom" set:html={homepage.ctaText} /></Wrapper>
   </div>
   <Wrapper class="wrapper homepage" bgcolor={homepage.backgroundColor?.hex}>
     {homepage.sections.map((item) => <SectionBlock block={item} />)}
@@ -94,7 +95,7 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-   /* margin-bottom: 30px;*/
+    /* margin-bottom: 30px;*/
   }
 
   .content {
@@ -102,33 +103,31 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
     display: flex;
     flex-direction: column;
     gap: 16px;
-    text-align:center;
-    align-items:center;
-  
+    text-align: center;
+    align-items: center;
+
     :global(h1) {
-     
       color: var(--color-white);
       font-family: var(--font-headline);
       text-transform: none;
       font-weight: 900;
-      font-size:clamp(18px, 3vw, 24px);
+      font-size: clamp(18px, 3vw, 24px);
     }
     :global(h2) {
-       max-width:1024px;
+      max-width: 1024px;
       color: var(--color-yellow);
       font-family: var(--font-headline);
       text-transform: uppercase;
       font-weight: 900;
-      font-size:clamp(24px, 4vw, 48px);
+      font-size: clamp(24px, 4vw, 48px);
       text-shadow: 1px 2px 2px #000000;
-          hyphens: none;
-     
+      hyphens: none;
     }
-    :global(h2 span){
-      color : white;
+    :global(h2 span) {
+      color: white;
     }
     :global(p) {
-      color:white;
+      color: white;
     }
   }
   .homepage :global(.subtitle p) {

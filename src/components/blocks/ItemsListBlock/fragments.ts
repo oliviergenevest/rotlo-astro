@@ -50,7 +50,7 @@ export const ItemsListBlockFragment = graphql(
           }
           __typename
           slug
-         
+
           image {
             alt
             responsiveImage(

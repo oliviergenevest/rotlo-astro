@@ -3,17 +3,17 @@ import type { HTMLTag, Polymorphic } from 'astro/types';
 
 type Props<T extends HTMLTag = 'div'> = Polymorphic<{
   as: T;
-    bgcolor?: string;
+  bgcolor?: string;
 }>;
 
 const { as: Tag = 'div' as any, bgcolor, ...props } = Astro.props;
 
 const bgBlockColor = bgcolor;
 //console.log('bgBlockColor', bgBlockColor);
-console.log("wrapper component props", props);
+console.log('wrapper component props', props);
 ---
 
-<Tag {...props}  class="wrapper" style={`--color: ${bgBlockColor}`} {...props}>
+<Tag {...props} class="wrapper" style={`--color: ${bgBlockColor}`} {...props}>
   <slot />
 </Tag>
 
@@ -21,14 +21,14 @@ console.log("wrapper component props", props);
   .wrapper {
     width: 100%;
     padding-left: var(--page-margin);
-    padding-right: var(--page-margin);   
+    padding-right: var(--page-margin);
     max-width: 100%;
     margin-left: auto;
     margin-right: auto;
     display: flex;
     flex-direction: column;
     align-items: center;
-      background: var(--color);
+    background: var(--color);
   }
 
   .wrapper.wide {
@@ -38,6 +38,6 @@ console.log("wrapper component props", props);
   .wrapper.homepage {
     display: flex;
     flex-direction: column;
-   /* gap: rfs(32px);*/
+    /* gap: rfs(32px);*/
   }
 </style>

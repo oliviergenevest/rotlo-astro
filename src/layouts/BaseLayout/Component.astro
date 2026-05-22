@@ -14,12 +14,11 @@ const { seo } = Astro.props;
 <!doctype html>
 <html lang="fr">
   <head>
-
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
     <meta name="generator" content={Astro.generator} />
-    
+
     <Seo data={[...seo]} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 

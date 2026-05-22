@@ -22,7 +22,6 @@ import { ButtonsListBlock } from '~/components/blocks/ButtonsListBlock';
 import { ButtonsListBlockFragment } from '~/components/blocks/ButtonsListBlock/fragments';
 import { LogosListBlockFragment } from '~/components/blocks/LogosListBlock/fragments';
 
-
 /**
  * Let's define the GraphQL fragment needed for the component to function.
  *
@@ -92,14 +91,13 @@ export const SectionBlockFragment = graphql(
           ... on ButtonBlockRecord {
             ...ButtonBlockFragment
           }
-            ... on ButtonsListBlockRecord {
+          ... on ButtonsListBlockRecord {
             ...ButtonsListBlockFragment
           }
           ... on ImageTextBlockRecord {
             ...ImageTextBlockFragment
           }
-         
-        
+
           ... on SlideshowBlockRecord {
             ...SlideshowBlockFragment
           }

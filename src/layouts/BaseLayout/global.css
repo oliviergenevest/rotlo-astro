@@ -78,13 +78,12 @@ h6 {
 }
 
 h1 {
-  font-weight:900;
-  padding-bottom:rfs(2rem);
- 
+  font-weight: 900;
+  padding-bottom: rfs(2rem);
 }
 h2 {
-  padding-bottom:rfs(1rem);
-   font-weight:600;
+  padding-bottom: rfs(1rem);
+  font-weight: 600;
 }
 
 ::-moz-selection {
@@ -307,7 +306,7 @@ blockquote footer {
   background-color: var(--color-yellow);
   color: var(--color-blue-dark);
   border-radius: 16px;
-  border:1px solid white;
+  border: 1px solid white;
   &:hover {
     background-color: #ffd267;
   }
@@ -414,14 +413,13 @@ blockquote footer {
 }
  */
 
- /* Liste de hastags (subtitle) de la liste de vignette artiste */
- .hashtags_list {
-display:flex;
+/* Liste de hastags (subtitle) de la liste de vignette artiste */
+.hashtags_list {
+  display: flex;
 
-    flex-wrap: wrap;
-gap:rfs(8px);
-font-size:16px;
-list-style:none;
-padding:0;
-
- }
+  flex-wrap: wrap;
+  gap: rfs(8px);
+  font-size: 16px;
+  list-style: none;
+  padding: 0;
+}

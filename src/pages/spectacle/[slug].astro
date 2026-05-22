@@ -126,13 +126,14 @@ const optimizedBgImage = await getImage({ src: spectacle.mainImage.url, inferSiz
 <Layout additionalSeo={spectacle._seoMetaTags}>
   <div class="intro" style={`--urlimg: url('${optimizedBgImage.src}');`}>
     {
-       <div class="intro_background_image_wrapper" >
-      <ResponsiveImage
-    
-        imgClass="intro_background_image"
-        data={spectacle.mainImage.responsiveImage}
-      />
-    </div> 
+      (
+        <div class="intro_background_image_wrapper">
+          <ResponsiveImage
+            imgClass="intro_background_image"
+            data={spectacle.mainImage.responsiveImage}
+          />
+        </div>
+      )
     }
     <Wrapper class="intro_content">
       <div class="intro_title" transition:name={`post-title-${spectacle.slug}`}>

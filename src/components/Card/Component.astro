@@ -7,7 +7,6 @@ import { Button, Modal, ModalHeader, ModalBody, ModalFooter } from 'free-astro-c
 
 const { data } = Astro.props;
 
-
 //console.log(data.image)
 
 {
@@ -27,27 +26,36 @@ const subtitle = data.__typename === 'MemberRecord' ? data.subtitle : data.cardS
 const hashtagsList = data.hashtagListe ? data.hashtagListe : null;
 const image = data.image ? data.image.responsiveImage : data.cardImage.responsiveImage;
 
-
-
 //console.log('badgeLabel', data.badgeLabel);
 ---
 
 <div class="card">
-  {data.__typename === 'MemberRecord' ? <a data-modal-trigger={data.slug} /> : <a href={path}  />}
+  {data.__typename === 'MemberRecord' ? <a data-modal-trigger={data.slug} /> : <a href={path} />}
   {data.badgeLabel && <div class="card_badge">{data.badgeLabel}</div>}
-  <div class="card_image"  >
+  <div class="card_image">
     {
       data.filter ? (
-        <ResponsiveImage data={data.image.filterResponsiveImage}  />
+        <ResponsiveImage data={data.image.filterResponsiveImage} />
       ) : (
         <ResponsiveImage data={image} transition:name={`image-${data.slug}`} />
       )
     }
   </div>
   <div class="content">
-    <Title as="h2" class:list={['card_title', 'h2']} transition:name={`title-${data.slug}`}>{data.title}</Title>
-    {subtitle && <div class="subtitle" set:html={subtitle} /> }
-    {hashtagsList && <ul class="hashtags_list"> {hashtagsList.map((hashtag: { name: string }) => <li>{hashtag.name}</li>)}</ul>}
+    <Title as="h2" class:list={['card_title', 'h2']} transition:name={`title-${data.slug}`}
+      >{data.title}</Title
+    >
+    {subtitle && <div class="subtitle" set:html={subtitle} />}
+    {
+      hashtagsList && (
+        <ul class="hashtags_list">
+          {' '}
+          {hashtagsList.map((hashtag: { name: string }) => (
+            <li>{hashtag.name}</li>
+          ))}
+        </ul>
+      )
+    }
     {
       data.__typename === 'MemberRecord' && (
         <Modal id={data.slug} class="modal" size="4xl">
@@ -92,16 +100,16 @@ const image = data.image ? data.image.responsiveImage : data.cardImage.responsiv
 
     &:hover {
       cursor: pointer;
-      
     }
-       :global(img) { transition: transform 0.2s ease-in-out;}
-     :global(&:hover img)  {
-
-        position:relative;
-        overflow-y:none;
-            transform: scale(1.08);
-            transition: transform 0.2s ease-in-out;
-      }
+    :global(img) {
+      transition: transform 0.2s ease-in-out;
+    }
+    :global(&:hover img) {
+      position: relative;
+      overflow-y: none;
+      transform: scale(1.08);
+      transition: transform 0.2s ease-in-out;
+    }
   }
 
   .card_badge {
@@ -140,18 +148,19 @@ const image = data.image ? data.image.responsiveImage : data.cardImage.responsiv
     padding-bottom: 0.4rem;
   }
 
-  .subtitle :global(p) , .hashtags_list {
+  .subtitle :global(p),
+  .hashtags_list {
     color: var(--color-yellow);
     /*color: #0f4473;*/
     font-size: rfs(16px);
     line-height: normal;
     & li {
-    padding: 0.5rem 1rem;
-    border-radius: 8px;
-    color: #0f4473;
-        background: var(--color-yellow);
-    font-size: rfs(16px);
-    font-weight: 500;
+      padding: 0.5rem 1rem;
+      border-radius: 8px;
+      color: #0f4473;
+      background: var(--color-yellow);
+      font-size: rfs(16px);
+      font-weight: 500;
     }
   }
 </style>

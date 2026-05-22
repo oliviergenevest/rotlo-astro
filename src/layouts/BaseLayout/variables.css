@@ -33,7 +33,7 @@
   --error-color: #bf0000;
 
   /* THEME COLOR DENTIKIDS */
- 
+
   --color-sable: #f6eee5;
   --color-blue-light: #eff9fd;
   --color-blue-light-alt: #d2f3fd;
@@ -47,7 +47,7 @@
 
   --clip-path: polygon(0 3vw, 100% 0, 100% calc(100% - 3vw), 0 100%);
   --dato-gradient: linear-gradient(to right, #ff593d, #ff7751);
-    --og-gradient: linear-gradient(to right, #ff593d, #ff7751);
+  --og-gradient: linear-gradient(to right, #ff593d, #ff7751);
 
   --og-gradient: linear-gradient(180deg, #43a9d5 0%, #30738f 100%);
 

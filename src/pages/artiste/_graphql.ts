@@ -1,6 +1,10 @@
 import { graphql } from '~/lib/datocms/graphql';
 import type { BuildSitemapUrlsFn } from '~/pages/sitemap.xml';
-import { ArtisteUrlFragment, buildUrlForArtiste, buildUrlForNews } from '~/lib/datocms/gqlUrlBuilder/news';
+import {
+  ArtisteUrlFragment,
+  buildUrlForArtiste,
+  buildUrlForNews,
+} from '~/lib/datocms/gqlUrlBuilder/news';
 import { executeQueryOutsideAstro } from '~/lib/datocms/executeQuery';
 
 // SITEMAP
