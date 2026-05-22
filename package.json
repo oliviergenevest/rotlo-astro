@@ -9,7 +9,8 @@
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro",
-"generate-schema": "dotenv -- gql.tada generate schema https://graphql.datocms.com --header \"X-Exclude-Invalid: true\" --header \"Authorization: Bearer $DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN\"",    "generate-cma-types": "dotenv -- npx @datocms/cli schema:generate --api-token=$DATOCMS_CMA_TOKEN src/lib/datocms/cma-types.ts",
+    "generate-schema": "dotenv -- gql.tada generate schema https://graphql.datocms.com --header \"X-Exclude-Invalid: true\" --header \"Authorization: Bearer $DATOCMS_PUBLISHED_CONTENT_CDA_TOKEN\"",
+    "generate-cma-types": "dotenv -- npx @datocms/cli schema:generate --api-token=$DATOCMS_CMA_TOKEN src/lib/datocms/cma-types.ts",
     "lint": "prettier --check .",
     "format": "npx prettier . --write"
   },
@@ -23,7 +24,7 @@
     "@iconify-json/teenyicons": "^1.2.2",
     "@mux/mux-player": "^3.13.0",
     "@mux/mux-player-react": "^3.13.0",
-    "@netlify/functions": "^5.2.0",
+    "@netlify/functions": "^5.2.2",
     "@types/react": "^19.2.7",
     "@types/react-dom": "^19.2.3",
     "astro": "^6.2.0",
