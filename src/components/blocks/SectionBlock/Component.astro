@@ -1,0 +1,218 @@
+---
+import { type FragmentOf, readFragment } from '~/lib/datocms/graphql';
+import { SectionBlockFragment } from './fragments';
+import { StructuredText } from '@datocms/astro';
+
+import { ItemsListBlock } from '~/components/blocks/ItemsListBlock';
+//import { ItemsListBlockFragment } from '~/components/blocks/ItemsListBlock/fragments';
+
+import { ImageBlock } from '~/components/blocks/ImageBlock';
+//import { ImageBlockFragment } from '~/components/blocks/ImageBlock/fragments';
+import { VideoEmbedBlock } from '~/components/blocks/VideoEmbedBlock';
+import { ImageGalleryBlock } from '~/components/blocks/ImageGalleryBlock';
+//import { ImageGalleryBlockFragment } from '~/components/blocks/ImageGalleryBlock/fragments';
+
+import { ButtonBlock } from '~/components/blocks/ButtonBlock';
+//import { ButtonBlockFragment } from '~/components/blocks/ButtonBlock/fragments';
+import { ButtonsListBlock } from '~/components/blocks/ButtonsListBlock';
+//import { ButtonsListBlockFragment } from '~/components/blocks/ButtonsListBlock/fragments';
+import { LogosListBlock } from '~/components/blocks/LogosListBlock';
+//import { LogosListBlockFragment } from '~/components/blocks/LogosListBlock/fragments';
+
+
+
+import { SlideshowBlock } from '~/components/blocks/SlideshowBlock';
+//import { SlideshowBlockFragment } from '~/components/blocks/SlideshowBlock/fragments';
+import { PageInline } from '~/components/inlineRecord/PageInline';
+//import { PageInlineFragment } from '~/components/inlineRecord/PageInline/fragments';
+import { NewsInline } from '~/components/inlineRecord/NewsInline';
+//import { NewsInlineFragment } from '~/components/inlineRecord/NewsInline/fragments';
+
+import { ImageTextBlock } from '~/components/blocks/ImageTextBlock';
+//import { ImageTextBlockFragment } from '~/components/blocks/ImageTextBlock/fragments';
+import { PageLink } from '~/components/linkToRecord/PageLink';
+//import { PageLinkFragment } from '~/components/linkToRecord/PageLink/fragments';
+import { Icon } from 'astro-icon/components';
+
+interface Props {
+  block: FragmentOf<typeof SectionBlockFragment>;
+ 
+  }
+
+const { block } = Astro.props;
+
+//console.log(block);
+
+// Read unmasked block from fragment
+const unmaskedBlock = readFragment(SectionBlockFragment, block);
+const bgBlockColor = unmaskedBlock.backgroundColor?.hex;
+const bgGradient = unmaskedBlock.gradientBackground;
+const TwoColumnsLayout = unmaskedBlock.twoColonnes;
+const SectionId = unmaskedBlock.sectionId;
+---
+
+<div class:list={['sectionWrapper', { gradient: bgGradient }]} id={SectionId}>
+  <div class:list={['grid', { 'two-columns': TwoColumnsLayout }]}>
+
+    {
+      /*
+       * Structured Text is a JSON format similar to HTML, but with the advantage
+       * of a significantly reduced and tailored set of possible tags
+       * for editorial content, along with the capability to create hyperlinks
+       * to other DatoCMS records and embed custom DatoCMS blocks.
+       */
+    }
+    <div class="mainColonne">
+      <StructuredText
+        data={unmaskedBlock.structuredText}
+        blockComponents={/*
+         * If the structured text embeds any blocks, it's up to you to decide
+         * how to render them:
+         */
+        {
+          ItemsListBlockRecord: ItemsListBlock,
+          ButtonBlockRecord: ButtonBlock,
+          ButtonsListBlockRecord: ButtonsListBlock,
+          VideoEmbedBlockRecord: VideoEmbedBlock,
+          ImageBlockRecord: ImageBlock,
+          ImageGalleryBlockRecord: ImageGalleryBlock,
+          ImageTextBlockRecord: ImageTextBlock,
+          LogosListBlockRecord: LogosListBlock,
+          SlideshowBlockRecord: SlideshowBlock,
+        }}
+        linkToRecordComponents={/*
+         * If the structured text includes a link to another DatoCMS record,
+         * it's your decision to determine where the link should lead, or if
+         * you wish to customize its appearance:
+         */
+        {
+          PageRecord: PageLink,
+        }}
+        inlineRecordComponents={/*
+         * If the structured text includes a reference to another DatoCMS
+         * record, it's up to you to decide how to render them:
+         */
+        {
+          PageRecord: PageInline,
+          NewsRecord: NewsInline,
+        }}
+        nodeOverrides={/*
+         * You can also override the default rendering of certain nodes.
+         * In this case, we want to tweak the way headings (h1-h6) are rendered.
+         */ {
+          // heading: HeadingWithAnchorLink,
+ 
+        }}
+      />
+    </div>
+    {
+      TwoColumnsLayout && (
+        <div class="premiereColonne">
+          <StructuredText
+            data={unmaskedBlock.premiereColonne}
+            blockComponents={
+              /*
+               * If the structured text embeds any blocks, it's up to you to decide
+               * how to render them:
+               */
+              {
+                ButtonBlockRecord: ButtonBlock,
+                ButtonsListBlockRecord: ButtonsListBlock,
+
+                ImageBlockRecord: ImageBlock,
+              }
+            }
+            linkToRecordComponents={
+              /*
+               * If the structured text includes a link to another DatoCMS record,
+               * it's your decision to determine where the link should lead, or if
+               * you wish to customize its appearance:
+               */
+              {
+                PageRecord: PageLink,
+              }
+            }
+            inlineRecordComponents={
+              /*
+               * If the structured text includes a reference to another DatoCMS
+               * record, it's up to you to decide how to render them:
+               */
+              {
+                PageRecord: PageInline,
+                NewsRecord: NewsInline,
+              }
+            }
+            nodeOverrides={
+              /*
+               * You can also override the default rendering of certain nodes.
+               * In this case, we want to tweak the way headings (h1-h6) are rendered.
+               */ {
+                //heading: HeadingWithAnchorLink,
+                //heading: Heading,
+              }
+            }
+          />
+        </div>
+      )
+    }
+  </div>
+</div>
+
+<style>
+  .deco {
+    display: none;
+  }
+</style>
+
+<style define:vars={{ bgBlockColor }}>
+  .sectionWrapper {
+    background: var(--bgBlockColor);
+    padding: 3.2rem 1.6rem;
+    width: 100%;
+    @media screen and (max-width: 748px) {
+     /* padding: 0;*/
+     padding: 1.6rem 0rem;
+    }
+    &.gradient {
+      background: var(--og-gradient);
+    }
+  }
+
+  .sectionWrapper .grid {
+    display: grid;
+    max-width: var(--page-width-with-margin);
+    margin-left: auto;
+    margin-right: auto;
+    grid-gap: 6.4rem;
+    padding: 32px 16px 64px;
+    .mainColonne {
+      position: relative;
+      overflow: hidden;
+    }
+    .premiereColonne {
+      overflow: hidden;
+      position: relative;
+      display: flex;
+      height: fit-content;
+      flex-direction: column;
+      gap: 1.6rem;
+
+      z-index: 0;
+    }
+
+    &.two-columns {
+      .mainColonne {
+        padding-top: 0;
+        @media screen and (min-width: 1024px) {
+          padding-top: 1.6rem;
+        }
+      }
+
+      @media screen and (min-width: 1024px) {
+        grid-template-rows: 1fr;
+        grid-template-columns: 1.2fr 0.8fr;
+        overflow: hidden;
+      }
+    }
+  }
+</style>

@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="50.080002"
+   height="50.080002"
+   viewBox="0 0 50.080002 50.080002"
+   sodipodi:docname="Rond_orange.eps"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="0"
+       y="0"
+       inkscape:label="1"
+       id="page1"
+       width="50.080002"
+       height="50.080002"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     id="g1"
+     inkscape:groupmode="layer"
+     inkscape:label="1">
+    <g
+       id="group-R5">
+      <path
+         id="path2"
+         d="m 38.5938,187.816 c 0,82.278 66.9372,149.219 149.2192,149.219 82.281,0 149.222,-66.941 149.222,-149.219 0,-82.281 -66.941,-149.2222 -149.222,-149.2222 -82.282,0 -149.2192,66.9412 -149.2192,149.2222 z m 337.0352,0 c 0,103.559 -84.254,187.813 -187.816,187.813 C 84.2539,375.629 0,291.375 0,187.816 0,84.2539 84.2539,0 187.813,0 291.375,0 375.629,84.2539 375.629,187.816"
+         style="fill:#d34f24;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(0.13333333,0,0,-0.13333333,0,50.08)" />
+    </g>
+  </g>
+</svg>

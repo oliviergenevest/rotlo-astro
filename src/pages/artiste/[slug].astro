@@ -1,0 +1,121 @@
+---
+import { graphql } from '~/lib/datocms/graphql';
+import { Layout } from '../../layouts/Layout';
+import { TagFragment } from '~/lib/datocms/commonFragments';
+import { executeQuery } from '~/lib/datocms/executeQuery';
+import { StructuredText } from '@datocms/astro';
+
+import { HeadingWithAnchorLink } from '~/components/HeadingWithAnchorLink';
+
+import { isDraftModeEnabled } from '~/lib/draftMode';
+import { DraftModeQueryListener } from '~/components/DraftModeQueryListener';
+
+import { PageInline } from '~/components/inlineRecord/PageInline';
+import { PageInlineFragment } from '~/components/inlineRecord/PageInline/fragments';
+
+import { PageLink } from '~/components/linkToRecord/PageLink';
+import { PageLinkFragment } from '~/components/linkToRecord/PageLink/fragments';
+
+import { VideoBlock } from '~/components/blocks/VideoBlock';
+import { VideoBlockFragment } from '~/components/blocks/VideoBlock/fragments';
+
+import { ImageBlock } from '~/components/blocks/ImageBlock';
+import { ResponsiveImageFragment } from '~/components/ResponsiveImage/fragments';
+
+import { ImageGalleryBlock } from '~/components/blocks/ImageGalleryBlock';
+import { ImageGalleryBlockFragment } from '~/components/blocks/ImageGalleryBlock/fragments';
+
+import { OlivBlock } from '~/components/blocks/OlivBlock';
+import { OlivBlockFragment } from '~/components/blocks/OlivBlock/fragments';
+import { Wrapper } from '~/components/Wrapper';
+import { Title } from '~/components/Title';
+import { SideContentBlockFragment } from '~/components/blocks/SideContentBlock/fragments';
+import { ResponsiveImage } from '~/components/ResponsiveImage';
+
+/**
+ * The GraphQL query that will be executed for this route to generate the page
+ * content and metadata.
+ *
+ * Thanks to gql.tada, the result will be fully typed!
+ */
+const query = graphql(
+  /* GraphQL */ `
+    query AllArtisteQuery($slug: String) {
+      artiste(filter: { slug: { eq: $slug } }) {
+        _seoMetaTags {
+          ...TagFragment
+        }
+
+        title
+        description
+        slug
+        image {
+          responsiveImage { 
+            ...ResponsiveImageFragment
+          }
+        }
+        
+      }
+    }
+  `,
+  [TagFragment,ResponsiveImageFragment],
+);
+
+const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
+
+const variables = { slug: Astro.params.slug! };
+//console.log('-----> variables: slug artiste =', variables);
+const { artiste } = await executeQuery(query, {
+  includeDrafts: draftModeEnabled,
+  variables: variables,
+});
+
+if (!artiste) {
+  return new Response(null, {
+    status: 404,
+    statusText: 'Not found',
+  });
+}
+--- 
+
+
+<Layout additionalSeo={artiste._seoMetaTags} backgroundColor="var(--color-cream)">
+ <Wrapper class="wrapper wide">
+    <Title   transition:name={`title-${artiste.slug}`} class="title h1">{artiste.title}</Title>
+    <ResponsiveImage  transition:name={`image-${artiste.slug}`} data={artiste.image.responsiveImage} imgClass="rounded" />
+          <div class="artiste_description" set:html={artiste.description}/>
+
+  </Wrapper>
+</Layout>
+
+<style>
+  body {
+    background-color: var(--color-blue-dark);
+  }
+
+  .title {
+     font-size: rfs(56px);
+      line-height: rfs(66px);
+      max-width:700px;
+      hyphens:none;
+  }
+
+  .title.h1 span :global(p) {
+    margin-bottom: 0;
+    padding-bottom: 0;
+  }
+
+.artiste_description {
+  color:white;
+  font-size: rfs(20px);
+    line-height: 66px;
+    max-width:600px;
+    font-weight:400;
+    padding:2rem;
+
+}
+
+
+
+
+</style>

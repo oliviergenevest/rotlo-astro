@@ -1,0 +1,29 @@
+---
+import { type FragmentOf, readFragment } from '~/lib/datocms/graphql';
+import { ButtonsListBlockFragment } from './fragments';
+import { ButtonBlock } from '../ButtonBlock';
+
+interface Props {
+  block: FragmentOf<typeof ButtonsListBlockFragment>;
+}
+
+const { block } = Astro.props;
+
+// Read unmasked block from fragment
+const unmaskedBlock = readFragment(ButtonsListBlockFragment, block);
+---
+
+<div class="buttons_list_wrapper">
+  {unmaskedBlock.items.map((button) => <ButtonBlock block={button} />)}
+</div>
+
+<style>
+  .buttons_list_wrapper {
+    display: flex;
+    gap: rfs(16px);
+
+    @media screen and (max-width: 890px) {
+      flex-wrap: wrap;
+    }
+  }
+</style>

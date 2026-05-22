@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="89.26667"
+   height="89.26667"
+   viewBox="0 0 89.26667 89.26667"
+   sodipodi:docname="Rond_vert.eps"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="0"
+       y="0"
+       inkscape:label="1"
+       id="page1"
+       width="89.26667"
+       height="89.26667"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     id="g1"
+     inkscape:groupmode="layer"
+     inkscape:label="1">
+    <g
+       id="group-R5">
+      <path
+         id="path2"
+         d="M 544.203,125.344 C 488.262,69.4023 413.883,38.5938 334.77,38.5938 c -79.11,0 -153.489,30.8085 -209.426,86.7502 -55.9417,55.941 -86.7502,130.316 -86.7502,209.429 0,79.114 30.8085,153.489 86.7502,209.43 55.937,55.942 130.316,86.746 209.426,86.746 79.113,0 153.492,-30.804 209.433,-86.746 55.938,-55.941 86.746,-130.316 86.746,-209.43 0,-79.113 -30.808,-153.488 -86.746,-209.429 z m 99.024,339.746 c -16.864,39.863 -40.997,75.664 -71.735,106.402 -30.738,30.738 -66.539,54.875 -106.406,71.738 -41.285,17.461 -85.129,26.317 -130.316,26.317 -45.184,0 -89.028,-8.856 -130.313,-26.317 C 164.59,626.367 128.789,602.23 98.0508,571.492 67.3125,540.754 43.1797,504.953 26.3164,465.09 8.85156,423.805 0,379.961 0,334.773 0,289.59 8.85156,245.742 26.3164,204.461 43.1797,164.594 67.3125,128.793 98.0508,98.0547 128.789,67.3125 164.59,43.1797 204.457,26.3164 245.742,8.85547 289.586,0 334.77,0 c 45.187,0 89.031,8.85547 130.316,26.3164 39.867,16.8633 75.668,40.9961 106.406,71.7383 30.738,30.7383 54.871,66.5393 71.735,106.4063 17.464,41.281 26.316,85.129 26.316,130.312 0,45.188 -8.852,89.032 -26.316,130.317"
+         style="fill:#42ad75;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(0.13333333,0,0,-0.13333333,0,89.266667)" />
+    </g>
+  </g>
+</svg>

@@ -70,7 +70,7 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
   }
   ul {
     display: flex;
-    gap: rfs(16px);
+    gap: rfs(8px);
     justify-content: center;
     list-style: none;
     flex-wrap: wrap;
@@ -86,7 +86,7 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     text-decoration: none;
     position: relative;
     padding-bottom: 4px;
-    text-transform: lowercase;
+    
   }
 
   a[aria-current='page']::before {
@@ -126,13 +126,13 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     width: 0;
     overflow: hidden;
     height: 100vh;
-    background-color: var(--color-turquoise);
+    background-color: var(--dark-bg-color);
 
     transition: all 0.15s ease-in;
     ul {
       display: flex;
       flex-direction: column;
-      padding-top: 48px;
+      padding-top: 78px;
       a,
       a:hover {
         color: var(--color-white);
@@ -150,6 +150,10 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
       transition: width 0.2s ease-in-out;
     }
   }
+
+ html .overlay {
+  position:fixed;
+ }
 
   html.menu_open .overlay {
     display: none;
@@ -171,6 +175,6 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     padding-right: 12px;
   }
   body.menu_open {
-    overflow: hidden;
+    overflow: hidden!important;
   }
 </style>

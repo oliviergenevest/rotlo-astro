@@ -16,6 +16,9 @@ import { PageInlineFragment } from '~/components/inlineRecord/PageInline/fragmen
 import { PageLink } from '~/components/linkToRecord/PageLink';
 import { PageLinkFragment } from '~/components/linkToRecord/PageLink/fragments';
 
+import { ButtonBlock } from '~/components/blocks/ButtonBlock';
+import { ButtonBlockFragment } from '~/components/blocks/ButtonBlock/fragments';
+
 import { VideoBlock } from '~/components/blocks/VideoBlock';
 import { VideoBlockFragment } from '~/components/blocks/VideoBlock/fragments';
 
@@ -34,14 +37,13 @@ import { ImageTextBlockFragment } from '~/components/blocks/ImageTextBlock/fragm
 import { ItemsListBlock } from '~/components/blocks/ItemsListBlock';
 import { ItemsListBlockFragment } from '~/components/blocks/ItemsListBlock/fragments';
 
-import { AgendaBlock } from '~/components/blocks/AgendaBlock';
-import { AgendaBlockFragment } from '~/components/blocks/AgendaBlock/fragments';
-
 import { Wrapper } from '~/components/Wrapper';
 import { Title } from '~/components/Title';
 import { LogosListBlockFragment } from '~/components/blocks/LogosListBlock/fragments';
 import { LogosListBlock } from '~/components/blocks/LogosListBlock';
 
+import { SectionBlock } from '~/components/blocks/SectionBlock';
+import { SectionBlockFragment } from '~/components/blocks/SectionBlock/fragments';
 /**
  * The GraphQL query that will be executed for this route to generate the page
  * content and metadata.
@@ -60,68 +62,18 @@ const query = graphql(
           hex
         }
         _firstPublishedAt
-        structuredText {
-          value
-          blocks {
-            ... on RecordInterface {
-              id
-              __typename
-            }
-            ... on ImageBlockRecord {
-              ...ImageBlockFragment
-            }
-            ... on ImageGalleryBlockRecord {
-              ...ImageGalleryBlockFragment
-            }
-            ... on VideoBlockRecord {
-              ...VideoBlockFragment
-            }
-            ... on OlivBlockRecord {
-              ...OlivBlockFragment
-            }
-            ... on ImageTextBlockRecord {
-              ...ImageTextBlockFragment
-            }
-            ... on ItemsListBlockRecord {
-              ...ItemsListBlockFragment
-            }
-            ... on AgendaBlockRecord {
-              ...AgendaBlockFragment
-            }
-            ... on LogosListBlockRecord {
-              ...LogosListBlockFragment
-            }
-          }
-          links {
-            ... on RecordInterface {
-              id
-              __typename
-            }
-            ...PageLinkFragment
-            ...PageInlineFragment
-          }
+        sections {
+          ...SectionBlockFragment
         }
       }
     }
   `,
-  [
-    TagFragment,
-    ImageBlockFragment,
-    ImageGalleryBlockFragment,
-    OlivBlockFragment,
-    ImageTextBlockFragment,
-    VideoBlockFragment,
-    PageLinkFragment,
-    PageInlineFragment,
-    ItemsListBlockFragment,
-    AgendaBlockFragment,
-    LogosListBlockFragment,
-  ],
+  [TagFragment, SectionBlockFragment],
 );
 const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
 
 const variables = { slug: Astro.params.slug! };
-/*console.log('-----> variables: slug page =', variables);*/
+//console.log('-----> variables: slug page =', variables);
 const { page } = await executeQuery(query, {
   includeDrafts: draftModeEnabled,
   variables: variables,
@@ -134,58 +86,12 @@ if (!page) {
   });
 }
 
-const bgColor = page.backgroundColor.hex;
+const bgBlockColor = page.backgroundColor?.hex;
 ---
 
 <Layout additionalSeo={page._seoMetaTags}>
-  <Wrapper class="wrapper">
-    {
-      /*
-       * Structured Text is a JSON format similar to HTML, but with the advantage
-       * of a significantly reduced and tailored set of possible tags
-       * for editorial content, along with the capability to create hyperlinks
-       * to other DatoCMS records and embed custom DatoCMS blocks.
-       */
-    }
-    <StructuredText
-      data={page.structuredText}
-      blockComponents={/*
-       * If the structured text embeds any blocks, it's up to you to decide
-       * how to render them:
-       */
-      {
-        ImageBlockRecord: ImageBlock,
-        ImageGalleryBlockRecord: ImageGalleryBlock,
-        VideoBlockRecord: VideoBlock,
-        OlivBlockRecord: OlivBlock,
-        ImageTextBlockRecord: ImageTextBlock,
-        ItemsListBlockRecord: ItemsListBlock,
-        AgendaBlockRecord: AgendaBlock,
-        LogosListBlockRecord: LogosListBlock,
-      }}
-      linkToRecordComponents={/*
-       * If the structured text includes a link to another DatoCMS record,
-       * it's your decision to determine where the link should lead, or if
-       * you wish to customize its appearance:
-       */
-      {
-        PageRecord: PageLink,
-      }}
-      inlineRecordComponents={/*
-       * If the structured text includes a reference to another DatoCMS
-       * record, it's up to you to decide how to render them:
-       */
-      {
-        PageRecord: PageInline,
-      }}
-      nodeOverrides={/*
-       * You can also override the default rendering of certain nodes.
-       * In this case, we want to tweak the way headings (h1-h6) are rendered.
-       */ {
-        heading: HeadingWithAnchorLink,
-        //heading: Title,
-      }}
-    />
+  <Wrapper class="regular_page wrapper" bgcolor={bgBlockColor}>
+    {page.sections.map((item) => <SectionBlock block={item} />)}
   </Wrapper>
 
   <!-- <div class="published_date">Published at {page._firstPublishedAt}</div> -->

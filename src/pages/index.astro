@@ -8,12 +8,12 @@ import { getImage } from 'astro:assets';
 import { isDraftModeEnabled } from '~/lib/draftMode';
 import { DraftModeQueryListener } from '~/components/DraftModeQueryListener';
 
-import { HomepageSectionBlock } from '~/components/blocks/HomepageSectionBlock';
-import { HomepageSectionBlockFragment } from '~/components/blocks/HomepageSectionBlock/fragments';
+import { SectionBlock } from '~/components/blocks/SectionBlock';
+import { SectionBlockFragment } from '~/components/blocks/SectionBlock/fragments';
 
 import { Wrapper } from '~/components/Wrapper';
 import { Title } from '~/components/Title';
-//import { fade, slide } from 'astro:transitions';
+import { fade } from 'astro:transitions';
 
 /**
  * The GraphQL query that will be executed for this route to generate the homepage
@@ -38,13 +38,13 @@ const query = graphql(
           hex
         }
         _firstPublishedAt
-        homepageSections {
-          ...HomepageSectionBlockFragment
+        sections {
+          ...SectionBlockFragment
         }
       }
     }
   `,
-  [TagFragment, HomepageSectionBlockFragment],
+  [TagFragment, SectionBlockFragment],
 );
 
 const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
@@ -61,12 +61,22 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
 //console.log( "optimizedBgImage",optimizedBgImage.src);
 ---
 
-<Layout additionalSeo={homepage._seoMetaTags}>
+<Layout additionalSeo={homepage._seoMetaTags} >
+  
+<!-- Fade transition with a duration of 400 milliseconds -->
+<div transition:animate={fade({ duration: '2.4s' })} >
+  <br>
+  TEST
+  <h1>sdgdfsgdfg dfhfghsgfhgsfh</h1>
+  <p>oihlskqwdfskdf sdlfhv hxldfh vlxdh ldfh vmsdfh mseihm wsdosid  eis ss eùes es ùoswe toswt psowj ù</p>
+  <br>
+
+</div>
   <div class="section_cta" style={`--urlimg: url('${optimizedBgImage.src}');`}>
-    <Wrapper> <div class="content fade-in-bottom" set:html={homepage.ctaText} /></Wrapper>
+    <Wrapper > <div class="content fade-in-bottom"  set:html={homepage.ctaText} /></Wrapper>
   </div>
-  <Wrapper class="wrapper homepage">
-    {homepage.homepageSections.map((item) => <HomepageSectionBlock block={item} />)}
+  <Wrapper class="wrapper homepage" bgcolor={homepage.backgroundColor?.hex}>
+    {homepage.sections.map((item) => <SectionBlock block={item} />)}
   </Wrapper>
 
   <!--<div>Published at {homepage._firstPublishedAt}</div> -->
@@ -77,14 +87,14 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
 <style>
   .section_cta {
     min-height: 500px;
-    min-height: calc(100vh - 232px);
+    min-height: calc(100vh - 115px);
     display: flex;
     align-items: center;
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.15)), var(--urlimg);
     background-size: cover;
     background-repeat: no-repeat;
     background-position: center center;
-    margin-bottom: 30px;
+   /* margin-bottom: 30px;*/
   }
 
   .content {
@@ -92,16 +102,37 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
     display: flex;
     flex-direction: column;
     gap: 16px;
-
+    text-align:center;
+    align-items:center;
+  
     :global(h1) {
-      color: var(--color-cream);
+     
+      color: var(--color-white);
+      font-family: var(--font-headline);
+      text-transform: none;
+      font-weight: 900;
+      font-size:clamp(18px, 3vw, 24px);
+    }
+    :global(h2) {
+       max-width:1024px;
+      color: var(--color-yellow);
       font-family: var(--font-headline);
       text-transform: uppercase;
-      font-weight: normal;
+      font-weight: 900;
+      font-size:clamp(24px, 4vw, 48px);
+      text-shadow: 1px 2px 2px #000000;
+          hyphens: none;
+     
+    }
+    :global(h2 span){
+      color : white;
+    }
+    :global(p) {
+      color:white;
     }
   }
   .homepage :global(.subtitle p) {
-    color: var(--color-white);
+    color: var(--color-yellow);
   }
   .homepage :global(.card_title) {
     color: var(--color-white);

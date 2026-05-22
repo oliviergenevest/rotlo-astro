@@ -1,0 +1,25 @@
+---
+import { type FragmentOf, readFragment } from '~/lib/datocms/graphql';
+import { ButtonBlockFragment } from './fragments';
+import { Icon } from 'astro-icon/components';
+interface Props {
+  block: FragmentOf<typeof ButtonBlockFragment>;
+ 
+
+  }
+
+const { block } = Astro.props;
+
+// Read unmasked block from fragment
+const unmaskedBlock = readFragment(ButtonBlockFragment, block);
+const icon = unmaskedBlock.icon;
+---
+
+<a
+  href={unmaskedBlock.targetUrl}
+  class="button_cta"
+  target={unmaskedBlock.external ? '_blank' : '_self'}
+>
+  {icon && <Icon class="icon" name={icon} title="Tel 04 75 53 97 37" />}
+  {unmaskedBlock.label}
+</a>

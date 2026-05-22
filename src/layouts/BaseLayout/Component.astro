@@ -2,8 +2,7 @@
 import { Seo, type TitleMetaLinkTag } from '@datocms/astro';
 import './reset.css';
 import './global.css';
-import { AstroFont } from 'astro-font';
-import { ClientRouter } from 'astro:transitions';
+import { ClientRouter, fade } from 'astro:transitions';
 
 type Props = {
   seo: TitleMetaLinkTag[];
@@ -15,59 +14,12 @@ const { seo } = Astro.props;
 <!doctype html>
 <html lang="fr">
   <head>
-    <!--   <style id="css-layers"  >
-      @layer reset, prose;
-    </style>-->
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width" />
 
     <meta name="generator" content={Astro.generator} />
-    <AstroFont
-      config={[
-        {
-          name: 'AtkinsonHyperlegible',
-          src: [
-            {
-              style: 'bold',
-              weight: '700',
-              path: './public/fonts/AtkinsonHyperlegible-Bold.woff2',
-            },
-          ],
-          preload: true,
-          display: 'swap',
-          selector: 'body',
-          fallback: 'sans-serif',
-        },
-        {
-          name: 'AtkinsonHyperlegible',
-          src: [
-            {
-              style: 'normal',
-              weight: '400',
-              path: './public/fonts/AtkinsonHyperlegible-Regular.woff2',
-            },
-          ],
-          preload: true,
-          display: 'swap',
-          selector: 'body',
-          fallback: 'sans-serif',
-        },
-
-        {
-          name: 'KirangHaerang',
-          src: [
-            {
-              weight: '400',
-              style: 'normal',
-              path: './public/fonts/KirangHaerang-Regular.woff2',
-            },
-          ],
-          preload: true,
-          display: 'swap',
-          fallback: 'serif',
-        },
-      ]}
-    />
+    
     <Seo data={[...seo]} />
     <link rel="sitemap" href="/sitemap-index.xml" />
 

@@ -8,12 +8,12 @@ interface Props {
 }
 
 const { block } = Astro.props;
-
 // Read unmasked block from fragment
 const unmaskedBlock = readFragment(LogosListBlockFragment, block);
 ---
 
 <div class="logos_list_wrapper">
+  liste de logos
   {unmaskedBlock.items.map((logo) => <LogoBlock logo={logo} />)}
 </div>
 

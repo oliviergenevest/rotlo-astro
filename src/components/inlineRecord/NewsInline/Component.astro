@@ -15,13 +15,13 @@ const unmaskedRecord = readFragment(NewsInlineFragment, record);
 
 <div class="news_inline_item">
   {
-    unmaskedRecord.image && (
+    unmaskedRecord.cardImage && (
       <div class="news_inline_image">
-        <ResponsiveImage data={unmaskedRecord.image?.responsiveImage} />
+        <ResponsiveImage data={unmaskedRecord.cardImage?.responsiveImage} />
       </div>
     )
   }
-  <div set:html={unmaskedRecord.content} class="news_inline_content" />
+  <div set:html={unmaskedRecord.title} class="news_inline_title" />
 </div>
 
 <style>
@@ -52,7 +52,7 @@ const unmaskedRecord = readFragment(NewsInlineFragment, record);
     border-radius: 4px;
   }
 
-  .news_inline_content {
+  .news_inline_title {
     flex: 1;
     :global(a) {
       color: #a8dbff;

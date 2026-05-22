@@ -88,7 +88,7 @@ export const GET: APIRoute = async ({ request }) => {
 
     const sitemap = await sitemapPromise;
 
-    return new Response(sitemap, {
+    return new Response(new Uint8Array(sitemap), {
       headers: responseHeaders,
     });
   } catch (error) {

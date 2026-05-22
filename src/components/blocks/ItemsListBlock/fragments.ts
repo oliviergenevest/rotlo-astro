@@ -42,8 +42,26 @@ export const ItemsListBlockFragment = graphql(
             }
           }
         }
-
-        ... on AtelierRecord {
+        ... on ArtisteRecord {
+          id
+          title
+          hashtagListe {
+            name
+          }
+          __typename
+          slug
+         
+          image {
+            alt
+            responsiveImage(
+              sizes: "(max-width: 526px) 100vw, 526px"
+              imgixParams: { auto: format, w: 526, ar: "16:9", fit: crop }
+            ) {
+              ...ResponsiveImageFragment
+            }
+          }
+        }
+        ... on NewsRecord {
           id
           title
           __typename

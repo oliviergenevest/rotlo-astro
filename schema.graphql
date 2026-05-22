@@ -106,47 +106,36 @@ type AgendaRecord implements RecordInterface {
   startDate: Date!
 }
 
-input AtelierModelFilter {
+input ArtisteModelFilter {
   _createdAt: CreatedAtFilter
   id: ItemIdFilter
   _firstPublishedAt: PublishedAtFilter
-  position: PositionFilter
   _publicationScheduledAt: PublishedAtFilter
   _unpublishingScheduledAt: PublishedAtFilter
   _publishedAt: PublishedAtFilter
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
-  badgeLabel: StringFilter
-  cardImage: FileFilter
-  cardSubtitle: TextFilter
-  mainContent: StructuredTextFilter
-  seoSettingsSocial: SeoFilter
+  description: TextFilter
+  facebookUrl: StringFilter
+  hashtagListe: LinksFilter
+  image: FileFilter
+  instagramUrl: StringFilter
   slug: SlugFilter
-  subtitle: TextFilter
   title: StringFilter
-  OR: [AtelierModelFilter]
-  AND: [AtelierModelFilter]
+  video: VideoFilter
+  websiteUrl: StringFilter
+  OR: [ArtisteModelFilter]
+  AND: [ArtisteModelFilter]
 }
 
-union AtelierModelMainContentBlocksField = ImageBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
-
-type AtelierModelMainContentField {
-  blocks: [AtelierModelMainContentBlocksField!]!
-  inlineBlocks: [String!]!
-  links: [String!]!
-  value: JsonField!
-}
-
-enum AtelierModelOrderBy {
+enum ArtisteModelOrderBy {
   _createdAt_ASC
   _createdAt_DESC
   id_ASC
   id_DESC
   _firstPublishedAt_ASC
   _firstPublishedAt_DESC
-  position_ASC
-  position_DESC
   _publicationScheduledAt_ASC
   _publicationScheduledAt_DESC
   _unpublishingScheduledAt_ASC
@@ -159,14 +148,18 @@ enum AtelierModelOrderBy {
   _updatedAt_DESC
   _isValid_ASC
   _isValid_DESC
-  badgeLabel_ASC
-  badgeLabel_DESC
+  facebookUrl_ASC
+  facebookUrl_DESC
+  instagramUrl_ASC
+  instagramUrl_DESC
   title_ASC
   title_DESC
+  websiteUrl_ASC
+  websiteUrl_DESC
 }
 
-"""Record of type Atelier (atelier)"""
-type AtelierRecord implements RecordInterface {
+"""Record of type Artiste (artiste)"""
+type ArtisteRecord implements RecordInterface {
   _createdAt: DateTime!
 
   """Editing URL"""
@@ -185,23 +178,19 @@ type AtelierRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
-  badgeLabel: String
-  cardImage: ImageFileField!
-  cardSubtitle(
+  description(
     """Process content as markdown"""
     markdown: Boolean
-  ): String!
+  ): String
+  facebookUrl: String
+  hashtagListe: [HashtagRecord!]!
   id: ItemId!
-  mainContent: AtelierModelMainContentField!
-  position: IntType
-  seoSettingsSocial: SeoField
-  sideContent: [SideContentBlockRecord!]!
+  image: ImageFileField!
+  instagramUrl: String
   slug: String!
-  subtitle(
-    """Process content as markdown"""
-    markdown: Boolean
-  ): String!
   title: String!
+  video: VideoField
+  websiteUrl: String
 }
 
 """Specifies how to filter Boolean fields"""
@@ -213,8 +202,8 @@ input BooleanFilter {
 """Represents `true` or `false` values."""
 scalar BooleanType
 
-"""Block of type Bouton (bouton)"""
-type BoutonRecord implements RecordInterface {
+"""Block of type Bouton (button_block)"""
+type ButtonBlockRecord implements RecordInterface {
   _createdAt: DateTime!
 
   """Editing URL"""
@@ -234,9 +223,34 @@ type BoutonRecord implements RecordInterface {
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
   external: BooleanType!
+  icon: String
   id: ItemId!
   label: String!
   targetUrl: String
+}
+
+"""Block of type Liste de boutons (buttons_list_block)"""
+type ButtonsListBlockRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime!
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime!
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  id: ItemId!
+  items: [ButtonBlockRecord!]!
 }
 
 type CollectionMetadata {
@@ -625,6 +639,68 @@ type GlobalSeoField {
   twitterAccount: String
 }
 
+input HashtagModelFilter {
+  _createdAt: CreatedAtFilter
+  id: ItemIdFilter
+  _firstPublishedAt: PublishedAtFilter
+  _publicationScheduledAt: PublishedAtFilter
+  _unpublishingScheduledAt: PublishedAtFilter
+  _publishedAt: PublishedAtFilter
+  _status: StatusFilter
+  _updatedAt: UpdatedAtFilter
+  _isValid: BooleanFilter
+  name: StringFilter
+  OR: [HashtagModelFilter]
+  AND: [HashtagModelFilter]
+}
+
+enum HashtagModelOrderBy {
+  _createdAt_ASC
+  _createdAt_DESC
+  id_ASC
+  id_DESC
+  _firstPublishedAt_ASC
+  _firstPublishedAt_DESC
+  _publicationScheduledAt_ASC
+  _publicationScheduledAt_DESC
+  _unpublishingScheduledAt_ASC
+  _unpublishingScheduledAt_DESC
+  _publishedAt_ASC
+  _publishedAt_DESC
+  _status_ASC
+  _status_DESC
+  _updatedAt_ASC
+  _updatedAt_DESC
+  _isValid_ASC
+  _isValid_DESC
+  name_ASC
+  name_DESC
+}
+
+"""Record of type Hashtag (hashtag)"""
+type HashtagRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime!
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime!
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  id: ItemId!
+  name: String
+}
+
 """Record of type 📝 Homepage (homepage)"""
 type HomepageRecord implements RecordInterface {
   _createdAt: DateTime!
@@ -651,47 +727,11 @@ type HomepageRecord implements RecordInterface {
     """Process content as markdown"""
     markdown: Boolean
   ): String!
-  homepageSections: [HomepageSectionBlockRecord!]!
   id: ItemId!
+  sections: [SectionBlockRecord!]!
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
   title: String!
-}
-
-union HomepageSectionBlockModelStructuredTextBlocksField = AgendaBlockRecord | ItemsListBlockRecord
-
-type HomepageSectionBlockModelStructuredTextField {
-  blocks: [HomepageSectionBlockModelStructuredTextBlocksField!]!
-  inlineBlocks: [String!]!
-  links: [HomepageSectionBlockModelStructuredTextLinksField!]!
-  value: JsonField!
-}
-
-union HomepageSectionBlockModelStructuredTextLinksField = NewsRecord | PageRecord
-
-"""Block of type Section pour homepage (homepage_section_block)"""
-type HomepageSectionBlockRecord implements RecordInterface {
-  _createdAt: DateTime!
-
-  """Editing URL"""
-  _editingUrl: String
-  _firstPublishedAt: DateTime!
-  _isValid: BooleanType!
-  _modelApiKey: String!
-  _publicationScheduledAt: DateTime
-  _publishedAt: DateTime!
-
-  """Generates SEO and Social card meta tags to be used in your frontend"""
-  _seoMetaTags(
-    """The locale to use to fetch the field's content"""
-    locale: SiteLocale
-  ): [Tag!]!
-  _status: ItemStatus!
-  _unpublishingScheduledAt: DateTime
-  _updatedAt: DateTime!
-  backgroundColor: ColorField
-  id: ItemId!
-  structuredText: HomepageSectionBlockModelStructuredTextField!
 }
 
 """Block of type 🌅 Image (image_block)"""
@@ -2869,7 +2909,7 @@ enum ItemStatus {
   published
 }
 
-union ItemsListBlockModelItemsField = AtelierRecord | MemberRecord | SpectacleRecord
+union ItemsListBlockModelItemsField = ArtisteRecord | MemberRecord | NewsRecord | SpectacleRecord
 
 """Block of type Liste de vignettes (items_list_block)"""
 type ItemsListBlockRecord implements RecordInterface {
@@ -2922,6 +2962,34 @@ input LinkFilter {
   in: [ItemId]
 
   """Filter records not linked to one of the specified records"""
+  notIn: [ItemId]
+
+  """
+  Filter records with the specified field defined (i.e. with any value) or not
+  """
+  exists: BooleanType
+}
+
+"""Specifies how to filter Multiple-links fields"""
+input LinksFilter {
+  """
+  Search for records with an exact match. The specified values must be Record IDs
+  """
+  eq: [ItemId]
+
+  """
+  Filter records linked to all of the specified records. The specified values must be Record IDs
+  """
+  allIn: [ItemId]
+
+  """
+  Filter records linked to at least one of the specified records. The specified values must be Record IDs
+  """
+  anyIn: [ItemId]
+
+  """
+  Filter records not linked to any of the specified records. The specified values must be Record IDs
+  """
   notIn: [ItemId]
 
   """
@@ -3050,13 +3118,63 @@ type MemberRecord implements RecordInterface {
   ): String
   filter: BooleanType!
   id: ItemId!
-  image: ImageFileField
+  image: ImageFileField!
   slug: String!
   subtitle(
     """Process content as markdown"""
     markdown: Boolean
   ): String!
   title: String!
+}
+
+"""Block of type menu_dropdown (menu_dropdown)"""
+type MenuDropdownRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime!
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime!
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  id: ItemId!
+  items: [MenuItemRecord!]!
+  title: String
+}
+
+"""Block of type menu_item (menu_item)"""
+type MenuItemRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime!
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime!
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  id: ItemId!
+  page: PageRecord
+  title: String
 }
 
 scalar MetaTagAttributes
@@ -3145,10 +3263,25 @@ input NewsModelFilter {
   _status: StatusFilter
   _updatedAt: UpdatedAtFilter
   _isValid: BooleanFilter
-  content: TextFilter
-  image: FileFilter
+  badgeLabel: StringFilter
+  cardImage: FileFilter
+  cardSubtitle: TextFilter
+  mainContent: StructuredTextFilter
+  seoSettingsSocial: SeoFilter
+  slug: SlugFilter
+  subtitle: TextFilter
+  title: StringFilter
   OR: [NewsModelFilter]
   AND: [NewsModelFilter]
+}
+
+union NewsModelMainContentBlocksField = ImageBlockRecord | ImageGalleryBlockRecord | VideoBlockRecord
+
+type NewsModelMainContentField {
+  blocks: [NewsModelMainContentBlocksField!]!
+  inlineBlocks: [String!]!
+  links: [String!]!
+  value: JsonField!
 }
 
 enum NewsModelOrderBy {
@@ -3172,6 +3305,10 @@ enum NewsModelOrderBy {
   _updatedAt_DESC
   _isValid_ASC
   _isValid_DESC
+  badgeLabel_ASC
+  badgeLabel_DESC
+  title_ASC
+  title_DESC
 }
 
 """Record of type News (news)"""
@@ -3194,13 +3331,23 @@ type NewsRecord implements RecordInterface {
   _status: ItemStatus!
   _unpublishingScheduledAt: DateTime
   _updatedAt: DateTime!
-  content(
+  badgeLabel: String
+  cardImage: ImageFileField!
+  cardSubtitle(
     """Process content as markdown"""
     markdown: Boolean
   ): String!
   id: ItemId!
-  image: ImageFileField
+  mainContent: NewsModelMainContentField!
   position: IntType
+  seoSettingsSocial: SeoField
+  sideContent: [SideContentBlockRecord!]!
+  slug: String!
+  subtitle(
+    """Process content as markdown"""
+    markdown: Boolean
+  ): String!
+  title: String!
 }
 
 """Block of type OLIV BLOCK (oliv_block)"""
@@ -3256,7 +3403,6 @@ input PageModelFilter {
   seoAnalysis: JsonFilter
   seoSettingsSocial: SeoFilter
   slug: SlugFilter
-  structuredText: StructuredTextFilter
   title: StringFilter
   OR: [PageModelFilter]
   AND: [PageModelFilter]
@@ -3287,15 +3433,6 @@ enum PageModelOrderBy {
   title_DESC
 }
 
-union PageModelStructuredTextBlocksField = AgendaBlockRecord | ImageBlockRecord | ImageGalleryBlockRecord | ImageTextBlockRecord | ItemsListBlockRecord | LogosListBlockRecord | OlivBlockRecord | VideoBlockRecord
-
-type PageModelStructuredTextField {
-  blocks: [PageModelStructuredTextBlocksField!]!
-  inlineBlocks: [String!]!
-  links: [PageRecord!]!
-  value: JsonField!
-}
-
 """Record of type 📝 Page (page)"""
 type PageRecord implements RecordInterface {
   _createdAt: DateTime!
@@ -3319,10 +3456,10 @@ type PageRecord implements RecordInterface {
   backgroundColor: ColorField!
   id: ItemId!
   position: IntType
+  sections: [SectionBlockRecord!]!
   seoAnalysis: JsonField
   seoSettingsSocial: SeoField
   slug: String!
-  structuredText: PageModelStructuredTextField!
   title: String!
 }
 
@@ -3412,10 +3549,17 @@ type Query {
   ): CollectionMetadata!
 
   """Returns meta information regarding a record collection"""
-  _allAteliersMeta(
+  _allArtistesMeta(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
-    filter: AtelierModelFilter
+    filter: ArtisteModelFilter
+  ): CollectionMetadata!
+
+  """Returns meta information regarding a record collection"""
+  _allHashtagsMeta(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+    filter: HashtagModelFilter
   ): CollectionMetadata!
 
   """Returns meta information regarding a record collection"""
@@ -3511,7 +3655,7 @@ type Query {
   ): [AgendaRecord!]!
 
   """Returns a collection of records"""
-  allAteliers(
+  allArtistes(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
 
@@ -3525,9 +3669,28 @@ type Query {
 
     """Limit the number of results"""
     first: IntType = 20
-    filter: AtelierModelFilter
-    orderBy: [AtelierModelOrderBy] = [position_ASC]
-  ): [AtelierRecord!]!
+    filter: ArtisteModelFilter
+    orderBy: [ArtisteModelOrderBy] = [_updatedAt_DESC]
+  ): [ArtisteRecord!]!
+
+  """Returns a collection of records"""
+  allHashtags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+
+    """Skip the first results"""
+    skip: IntType
+
+    """Limit the number of results"""
+    first: IntType = 20
+    filter: HashtagModelFilter
+    orderBy: [HashtagModelOrderBy] = [_updatedAt_DESC]
+  ): [HashtagRecord!]!
 
   """Returns a collection of records"""
   allMembers(
@@ -3663,7 +3826,7 @@ type Query {
   ): [FileField!]!
 
   """Returns a specific record"""
-  atelier(
+  artiste(
     """The locale to use to fetch the field's content"""
     locale: SiteLocale
 
@@ -3671,9 +3834,9 @@ type Query {
     If you want to fallback to a default translation when a translation has not been found
     """
     fallbackLocales: [SiteLocale!]
-    filter: AtelierModelFilter
-    orderBy: [AtelierModelOrderBy] = [position_ASC]
-  ): AtelierRecord
+    filter: ArtisteModelFilter
+    orderBy: [ArtisteModelOrderBy] = [_updatedAt_DESC]
+  ): ArtisteRecord
 
   """Returns the single instance record"""
   footer(
@@ -3685,6 +3848,19 @@ type Query {
     """
     fallbackLocales: [SiteLocale!]
   ): FooterRecord
+
+  """Returns a specific record"""
+  hashtag(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+
+    """
+    If you want to fallback to a default translation when a translation has not been found
+    """
+    fallbackLocales: [SiteLocale!]
+    filter: HashtagModelFilter
+    orderBy: [HashtagModelOrderBy] = [_updatedAt_DESC]
+  ): HashtagRecord
 
   """Returns the single instance record"""
   homepage(
@@ -3847,6 +4023,55 @@ type ResponsiveImage {
   width: IntType!
 }
 
+union SectionBlockModelPremiereColonneBlocksField = ButtonBlockRecord | ButtonsListBlockRecord | ImageBlockRecord
+
+type SectionBlockModelPremiereColonneField {
+  blocks: [SectionBlockModelPremiereColonneBlocksField!]!
+  inlineBlocks: [String!]!
+  links: [PageRecord!]!
+  value: JsonField!
+}
+
+union SectionBlockModelStructuredTextBlocksField = ButtonBlockRecord | ButtonsListBlockRecord | ImageBlockRecord | ImageGalleryBlockRecord | ImageTextBlockRecord | ItemsListBlockRecord | LogosListBlockRecord | SlideshowBlockRecord | VideoEmbedBlockRecord
+
+type SectionBlockModelStructuredTextField {
+  blocks: [SectionBlockModelStructuredTextBlocksField!]!
+  inlineBlocks: [String!]!
+  links: [SectionBlockModelStructuredTextLinksField!]!
+  value: JsonField!
+}
+
+union SectionBlockModelStructuredTextLinksField = NewsRecord | PageRecord
+
+"""Block of type Section  (section_block)"""
+type SectionBlockRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime!
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime!
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  backgroundColor: ColorField
+  gradientBackground: BooleanType!
+  id: ItemId!
+  premiereColonne: SectionBlockModelPremiereColonneField
+  sectionId: String
+  structuredText: SectionBlockModelStructuredTextField!
+  twoColonnes: BooleanType!
+}
+
 type SeoField {
   description: String
   image: FileField
@@ -3916,8 +4141,31 @@ type Site {
 }
 
 enum SiteLocale {
-  en
   fre
+}
+
+"""Block of type Diaporama (slideshow_block)"""
+type SlideshowBlockRecord implements RecordInterface {
+  _createdAt: DateTime!
+
+  """Editing URL"""
+  _editingUrl: String
+  _firstPublishedAt: DateTime!
+  _isValid: BooleanType!
+  _modelApiKey: String!
+  _publicationScheduledAt: DateTime
+  _publishedAt: DateTime!
+
+  """Generates SEO and Social card meta tags to be used in your frontend"""
+  _seoMetaTags(
+    """The locale to use to fetch the field's content"""
+    locale: SiteLocale
+  ): [Tag!]!
+  _status: ItemStatus!
+  _unpublishingScheduledAt: DateTime
+  _updatedAt: DateTime!
+  id: ItemId!
+  items: [ImageTextBlockRecord!]!
 }
 
 """Specifies how to filter Slug fields"""
@@ -4885,6 +5133,14 @@ type VideoFileField implements FileFieldInterface {
   ): String!
   video: UploadVideoField!
   width: IntType!
+}
+
+"""Specifies how to filter Video fields"""
+input VideoFilter {
+  """
+  Filter records with the specified field defined (i.e. with any value) or not
+  """
+  exists: BooleanType
 }
 
 enum VideoMp4Res {

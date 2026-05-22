@@ -64,7 +64,10 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
 </nav>
 
 <style>
-  @media screen and (max-width: 768px) {
+   nav.desktop_nav {
+      display: none;
+    }   
+  @media screen and (max-width: 1024px) {
     nav.desktop_nav {
       display: none;
     }

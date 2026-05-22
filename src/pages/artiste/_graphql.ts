@@ -1,6 +1,6 @@
 import { graphql } from '~/lib/datocms/graphql';
 import type { BuildSitemapUrlsFn } from '~/pages/sitemap.xml';
-import { AtelierUrlFragment, buildUrlForAtelier } from '~/lib/datocms/gqlUrlBuilder/atelier';
+import { ArtisteUrlFragment, buildUrlForArtiste, buildUrlForNews } from '~/lib/datocms/gqlUrlBuilder/news';
 import { executeQueryOutsideAstro } from '~/lib/datocms/executeQuery';
 
 // SITEMAP
@@ -9,15 +9,15 @@ export const buildSitemapUrls: BuildSitemapUrlsFn = async (executeQueryOptions) 
     graphql(
       /* GraphQL */ `
         query BuildSitemapUrls {
-          entries: allAteliers(first: 500) {
-            ...AtelierUrlFragment
+          entries: allArtistes(first: 500) {
+            ...ArtisteUrlFragment
           }
         }
       `,
-      [AtelierUrlFragment],
+      [ArtisteUrlFragment],
     ),
     executeQueryOptions,
   );
 
-  return entries.map(buildUrlForAtelier);
+  return entries.map(buildUrlForArtiste);
 };

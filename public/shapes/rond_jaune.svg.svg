@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   version="1.1"
+   id="svg1"
+   width="65.199997"
+   height="65.199997"
+   viewBox="0 0 65.199997 65.199997"
+   sodipodi:docname="Rond_jaune.eps"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:svg="http://www.w3.org/2000/svg">
+  <defs
+     id="defs1" />
+  <sodipodi:namedview
+     id="namedview1"
+     pagecolor="#ffffff"
+     bordercolor="#000000"
+     borderopacity="0.25"
+     inkscape:showpageshadow="2"
+     inkscape:pageopacity="0.0"
+     inkscape:pagecheckerboard="0"
+     inkscape:deskcolor="#d1d1d1">
+    <inkscape:page
+       x="0"
+       y="0"
+       inkscape:label="1"
+       id="page1"
+       width="65.199997"
+       height="65.199997"
+       margin="0"
+       bleed="0" />
+  </sodipodi:namedview>
+  <g
+     id="g1"
+     inkscape:groupmode="layer"
+     inkscape:label="1">
+    <g
+       id="group-R5">
+      <path
+         id="path2"
+         d="m 397.469,91.5469 c -40.86,-40.8594 -95.18,-63.3594 -152.961,-63.3594 -57.781,0 -112.106,22.5 -152.9611,63.3594 -40.8594,40.8551 -63.3594,95.1801 -63.3594,152.9611 0,57.781 22.5,112.105 63.3594,152.961 40.8551,40.859 95.1801,63.359 152.9611,63.359 57.781,0 112.101,-22.5 152.961,-63.359 40.859,-40.856 63.359,-95.18 63.359,-152.961 0,-57.781 -22.5,-112.102 -63.359,-152.9611 z m 19.933,325.8551 c -22.453,22.45 -48.597,40.078 -77.718,52.395 -30.153,12.754 -62.176,19.219 -95.176,19.219 -33.004,0 -65.028,-6.465 -95.18,-19.219 C 120.211,457.48 94.0664,439.852 71.6133,417.402 49.1641,394.949 31.5352,368.805 19.2188,339.688 6.46875,309.531 0,277.512 0,244.508 0,211.508 6.46875,179.484 19.2188,149.332 31.5352,120.215 49.1641,94.0664 71.6133,71.6133 94.0664,49.1641 120.211,31.5352 149.328,19.2188 179.48,6.46875 211.504,0 244.508,0 c 33,0 65.023,6.46875 95.176,19.2188 29.121,12.3164 55.265,29.9453 77.718,52.3945 22.45,22.4531 40.078,48.6017 52.395,77.7187 12.754,30.152 19.219,62.176 19.219,95.176 0,33.004 -6.465,65.023 -19.219,95.18 -12.317,29.117 -29.945,55.261 -52.395,77.714"
+         style="fill:#e7a52e;fill-opacity:1;fill-rule:nonzero;stroke:none"
+         transform="matrix(0.13333333,0,0,-0.13333333,0,65.2)" />
+    </g>
+  </g>
+</svg>

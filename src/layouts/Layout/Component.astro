@@ -13,6 +13,7 @@ import { Header } from '~/components/Header';
 
 type Props = {
   additionalSeo?: TitleMetaLinkTag[];
+  backgroundColor?: String;
 };
 
 const { additionalSeo = [] } = Astro.props;
@@ -32,15 +33,62 @@ const query = graphql(
 
 const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
 const result = await executeQuery(query, { includeDrafts: draftModeEnabled });
+const currentPath = Astro.url.pathname;
+//console.log('Layout currentPath:', currentPath);
 ---
 
 <BaseLayout seo={[...result._site.faviconMetaTags, ...additionalSeo]}>
-  <Subheader />
+  {currentPath === '/' ? <Header class="transparent" /> : <Header />}
 
-  <Header />
-  <div id="site">
+  <div id="site" role="main">
     <slot />
   </div>
+
   {/*  <DraftModeToggler />*/}
   <Footer />
 </BaseLayout>
+
+<style>
+  #site {
+    position: relative;
+    z-index: 0;
+  }
+</style>
+
+<style is:global>
+  @font-face {
+    font-family: 'Candal';
+    src: url('/fonts/Candal-Regular.ttf') format('truetype-variations');
+    font-weight: 400;
+    font-style: regular;
+    font-display: swap;
+  }
+  @font-face {
+    font-family: 'Albert Sans';
+    src: url('/fonts/AlbertSans-Italic-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 300 900;
+    font-style: italic;
+    font-display: swap;
+  }
+
+  @font-face {
+    font-family: 'Albert Sans';
+    src: url('/fonts/AlbertSans-VariableFont_wght.ttf') format('truetype-variations');
+    font-weight: 100 900;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  p > mark {
+    font-size: rfs(26px);
+    letter-spacing: 0;
+    font-weight: 300;
+    background: none;
+    line-height: rfs(38px);
+    font-family: 'Albert Sans';
+    & strong {
+      font-weight: 600;
+    }
+  }
+
+</style>

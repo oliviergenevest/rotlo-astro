@@ -39,8 +39,8 @@ import { SideContentBlockFragment } from '~/components/blocks/SideContentBlock/f
  */
 const query = graphql(
   /* GraphQL */ `
-    query AllAteliersQuery($slug: String) {
-      atelier(filter: { slug: { eq: $slug } }) {
+    query AllNewsQuery($slug: String) {
+      news(filter: { slug: { eq: $slug } }) {
         _seoMetaTags {
           ...TagFragment
         }
@@ -86,13 +86,13 @@ const query = graphql(
 const draftModeEnabled = isDraftModeEnabled(Astro.cookies);
 
 const variables = { slug: Astro.params.slug! };
-//console.log('-----> variables: slug atelier =', variables);
-const { atelier } = await executeQuery(query, {
+//console.log('-----> variables: slug news =', variables);
+const { news } = await executeQuery(query, {
   includeDrafts: draftModeEnabled,
   variables: variables,
 });
 
-if (!atelier) {
+if (!news) {
   return new Response(null, {
     status: 404,
     statusText: 'Not found',
@@ -100,14 +100,14 @@ if (!atelier) {
 }
 ---
 
-<Layout additionalSeo={atelier._seoMetaTags} backgroundColor="var(--color-cream)">
+<Layout additionalSeo={news._seoMetaTags} backgroundColor="var(--color-cream)">
   <Wrapper class="wrapper wide">
-    <Title class="title h1"> <span set:html={atelier.subtitle} /></Title>
+    <Title class="title h1"> <span set:html={news.subtitle} /></Title>
 
-    <div class="atelier_grid">
+    <div class="news_grid">
       <div class="grid_side">
         {
-          atelier.sideContent.map((block) => (
+          news.sideContent.map((block) => (
             <div class="side_content_bloc">
               {/* todo: fix type error */
               /* @ts-ignore*/}
@@ -168,7 +168,7 @@ if (!atelier) {
         }
 
         <StructuredText
-          data={atelier.mainContent}
+          data={news.mainContent}
           blockComponents={/*
            * If the structured text embeds any blocks, it's up to you to decide
            * how to render them:
@@ -208,7 +208,7 @@ if (!atelier) {
 
 <style>
   body {
-    background-color: var(--color-red);
+    background-color: var(--color-blue-dark);
   }
 
   .title.h1 span :global(p) {
@@ -216,11 +216,14 @@ if (!atelier) {
     padding-bottom: 0;
   }
 
-  .atelier_grid {
+  .news_grid {
     display: grid;
     grid-template-columns: 1fr 2fr;
     gap: 64px;
     padding-top: rfs(8px);
+    padding-bottom: 80px;
+    padding-left: rfs(16px);
+    padding-right: rfs(16px);
     :global(p) {
       color: var(--color-black);
     }
@@ -234,11 +237,14 @@ if (!atelier) {
   }
 
   .grid_main {
-    background-color: var(--color-white);
+    background-color: var(--color-yellow);
     padding: 32px;
     display: flex;
     flex-direction: column;
     gap: 16px;
+     @media (max-width: 750px) {
+      padding: 16px;
+    }
   }
 
   :global(p > mark) {
@@ -269,6 +275,9 @@ if (!atelier) {
     background-color: var(--color-white);
     border-top: 4px solid var(--color-yellow);
     padding: 32px;
+      @media (max-width: 750px) {
+      padding: 16px;
+    }
     :global(p) {
       font-size: rfs(16px);
       line-height: rfs(24px);

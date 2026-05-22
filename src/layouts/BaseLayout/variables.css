@@ -1,19 +1,24 @@
 :root {
   --font-sans:
-    AtkinsonHyperlegible, -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
-  --font-headline: KirangHaerang, 'Times New Roman', serif;
-  --font-mono: AtkinsonHyperlegible, SFMono-Regular, Source Code Pro, Menlo, monospace;
-  --font-serif: AtkinsonHyperlegible, Georgia, serif;
-  --page-margin: 30px;
+    'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-cta-title:
+    'Candal', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-headline:
+    'Albert Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu',
+    'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+  --font-mono: 'Albert Sans', SFMono-Regular, Source Code Pro, Menlo, monospace;
+  --font-serif: 'Albert Sans', Georgia, serif;
+  --page-margin: 0;
 
   @media screen and (max-width: 600px) {
-    --page-margin: 16px;
+    --page-margin: 0;
   }
 
   --page-width-with-margin: 1280px;
 
-  --base-body-color: #fff;
+  --base-body-color: #000;
   --extra-light-body-color: #969fb6;
   --light-body-color: #71788a;
   --base-bg-color: white;
@@ -27,22 +32,24 @@
   --azure-color: #33a3b1;
   --error-color: #bf0000;
 
-  /* THEME LE SON DU PAPIER SPECIFIC VAR */
-  --color-darkblue: #365fd1;
-  --color-lightblue: #44b6da;
-  --color-turquoise: #128f97;
-  --color-yellow: #d9a22d;
-  --color-red: #e94554;
-  --color-green: #7aba5a;
-  --color-cream: #fdf0e0;
-  --color-darkcream: #f6e0bc; /*ajouter b3 pour transparence */
+  /* THEME COLOR DENTIKIDS */
+ 
+  --color-sable: #f6eee5;
+  --color-blue-light: #eff9fd;
+  --color-blue-light-alt: #d2f3fd;
+  --color-blue-dark: #0f475f;
+  --color-blue: #108dcf;
+  --color-yellow: #ffca4d;
   --color-white: #fff;
-  --color-black: #312b2b;
+  --color-black: #000;
 
   /*--breakpoint-tablet:768px;*/
 
   --clip-path: polygon(0 3vw, 100% 0, 100% calc(100% - 3vw), 0 100%);
   --dato-gradient: linear-gradient(to right, #ff593d, #ff7751);
+    --og-gradient: linear-gradient(to right, #ff593d, #ff7751);
+
+  --og-gradient: linear-gradient(180deg, #43a9d5 0%, #30738f 100%);
 
   --box-shadow:
     0 0.9px 2.2px rgba(0, 0, 0, 0.02), 0 2.2px 5.3px rgba(0, 0, 0, 0.028),

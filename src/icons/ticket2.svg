@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 134 58" width="134" height="58" fill="none" stroke="#0a192f" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+  <path d="M 10,1 H 124 A 9,9 0 0 1 133,10 V 23 A 5,5 0 0 0 133,35 V 48 A 9,9 0 0 1 124,57 H 94 A 4,4 0 0 0 86,57 H 10 A 9,9 0 0 1 1,48 V 35 A 5,5 0 0 0 1,23 V 10 A 9,9 0 0 1 10,1 Z" />
+  
+  <path d="M 2,49 C 6,48 8,42 14,46 C 18,49 22,53 28,54 C 31,54 36,56 42,57" stroke-width="1.5" />
+  <path d="M 2,45 C 5,44 7,38 12,41 C 15,44 19,49 24,50 C 27,51 31,54 36,55" stroke-width="1.5" />
+  <path d="M 2,41 C 4,40 6,34 10,36 C 12,39 16,44 20,45 C 23,46 26,49 31,50" stroke-width="1.5" />
+  <path d="M 2,37 C 3,36 5,30 8,31 C 10,34 13,38 17,39 C 19,40 22,43 26,44" stroke-width="1.5" />
+
+  <text x="67" y="21" font-family="system-ui, -apple-system, sans-serif" font-weight="700" font-size="8.5" fill="#0a192f" stroke="none" text-anchor="middle" letter-spacing="0.3">LE CHAMP DES ONDES</text>
+
+  <line x1="48" y1="28" x2="86" y2="28" stroke-width="1.5" />
+
+  <text x="67" y="42" font-family="system-ui, -apple-system, sans-serif" font-weight="600" font-size="8" fill="#0a192f" stroke="none" text-anchor="middle">Festival</text>
+</svg>

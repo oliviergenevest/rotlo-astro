@@ -1,0 +1,83 @@
+---
+import { type FragmentOf, readFragment } from '~/lib/datocms/graphql';
+import { SlideshowBlockFragment } from './fragments';
+import { ImageTextBlock } from '../ImageTextBlock';
+import { Swiper, SwiperWrapper, SwiperSlide, SwiperPagination } from 'astro-swiper';
+import type { AstroSwiperType } from 'astro-swiper';
+
+const astroSwiperOptions: AstroSwiperType = {
+  options: {},
+};
+interface Props {
+  block: FragmentOf<typeof SlideshowBlockFragment>;
+}
+
+const { block } = Astro.props;
+// Read unmasked block from fragment
+const unmaskedBlock = readFragment(SlideshowBlockFragment, block);
+---
+
+<Swiper
+  options={{
+    // check options at https://swiperjs.com/swiper-api
+    slidesPerView: 1,
+    // Responsive breakpoints
+    breakpoints: {
+      // when window width is >= 320px
+      554: {
+        slidesPerView: 1.2,
+      },
+    },
+    loop: true,
+    spaceBetween: '32px',
+    pagination: {
+      el: '.swiper-pagination',
+      dynamicBullets: true,
+      clickable: true,
+    },
+  }}
+>
+  <SwiperWrapper>
+    <!-- Slides -->
+    {
+      unmaskedBlock.items.map((item) => (
+        <SwiperSlide>
+          <ImageTextBlock block={item} />
+        </SwiperSlide>
+      ))
+    }
+  </SwiperWrapper>
+  <SwiperPagination />
+</Swiper>
+
+<style>
+  .swiper {
+    width: 100%;
+  }
+
+  img {
+    width: 100%;
+    max-height: 400px;
+  }
+
+  :global(.swiper-pagination) {
+    padding-top: 16px;
+  }
+
+  :global(.swiper-pagination-bullet) {
+    width: 15px;
+    height: 15px;
+    text-align: center;
+    line-height: 20px;
+    font-size: 12px;
+    color: #000;
+    opacity: 1;
+
+    background: var(--color-blue-dark);
+  }
+
+  :global(.swiper-pagination-bullet-active) {
+    color: #fff;
+    background: var(--color-yellow);
+  }
+</style>

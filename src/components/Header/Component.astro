@@ -1,45 +1,73 @@
 ---
 import { NavigationMobile } from '~/components/NavigationMobile';
+import { Navigation } from '~/components/Navigation';
 import Hamburger from '../Hamburger.astro';
 import { Icon } from 'astro-icon/components';
+import { Fade } from 'react-swift-reveal';
+import { Slide } from 'react-swift-reveal';
+
+type Props = {
+  class?: String;
+};
+//console.log('Astro.props',Astro.props)
+const customClass = Astro.props.class;
 ---
 
-<div class="hidingHeader" id="hidingHeader">
-  <div class="header hidingHeader-in">
+<div class="hidingHeader" id={customClass ? 'hidingHeader' : 'hidingHeader'}>
+  <div class:list={['header hidingHeader-in', customClass]} class="header hidingHeader-in">
     <a href="/" title="Page d'accueil">
-      <Icon class="brandlogo" name="lesondupapier-logo" />
+      {
+        customClass ? (
+          <Icon class="brandlogo" name={'brand-logo'} title="Rock on the l'Oule" />
+        ) : (
+          <Icon class="brandlogo" name={'brand-logo'} title="Rock on the l'Oule" />
+        )
+      }
     </a>
     <NavigationMobile />
+    <Slide client:only="react" duration={1000} delay={80} top distance="16px">
+      <Fade client:only="react" duration={800} delay={0}>
+        <Navigation />
+      </Fade>
+    </Slide>
+    <a href="tel:0475539737" class="button_cta">
+      <Icon class="icon" name="ticket" title="Billetterie en ligne" /> BILLETTERIE
+    </a>
     <Hamburger />
   </div>
 </div>
 
 <style>
-  [data-icon='lesondupapier-logo'] {
-    font-size: 10rem;
-    padding-top: 16px;
+  [data-icon='brand-logo'],
+  [data-icon='brand-logo'] {
+    font-size: rfs(4.48rem);
+    max-width: 100%;
+  }
+[data-icon='ticket'] {
+    font-size: rfs(5.48rem);
+    max-width: 100%;
   }
 
   .header {
-    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
-    background: var(--color-cream);
+    /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
+    background-color: var(--color-blue);
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-bottom: 16px;
-    @media (max-width: 770px) {
-      padding: 16px 10px;
-      padding-top: 0;
-      align-items: center;
-      align-content: center;
-      justify-content: space-between;
+    padding: 16px 16px;
+    @media (max-width: 500px) {
+      padding: 16px 16px;
+    }
+
+   &.transparent {
+      background-color: white;
+     
     }
   }
-
-  @media screen and (max-width: 600px) {
-    .brandlogo {
-      width: 90%;
-      height: auto;
+ .header .button_cta {padding-top:0;padding-bottom:0;}
+  @media screen and (max-width: 500px) {
+    .header .button_cta {
+      display: none;
     }
   }
 </style>
@@ -52,7 +80,6 @@ import { Icon } from 'astro-icon/components';
     hidingHeader(container);
 
     document.querySelector('.overlay')?.addEventListener('click', (e) => {
-      console.log('click');
       e.preventDefault();
       document.querySelector('.menu-icon')?.classList.toggle('is-opened');
       document.querySelector('nav.mobile_nav')?.classList.toggle('expanded');

@@ -23,8 +23,8 @@ export const NewsInlineFragment = graphql(
       }
 
       ... on NewsRecord {
-        content
-        image {
+        title
+        cardImage {
           alt
           responsiveImage(imgixParams: { auto: format, w: 350, ar: "16:9", fit: crop }) {
             ...ResponsiveImageFragment

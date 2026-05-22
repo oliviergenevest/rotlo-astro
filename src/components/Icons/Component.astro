@@ -1,6 +1,6 @@
 ---
 import { Icon } from 'astro-icon/components';
-import mongrandlombre from '../Icons/mongrandlombre.svg';
+//import mongrandlombre from '../Icons/mongrandlombre.svg';
 interface Props {
   className?: String;
 }
@@ -8,11 +8,9 @@ const { className } = Astro.props;
 ---
 
 <div class="social-icons-list" class:list={[className]}>
-  <Icon name="teenyicons:facebook-outline" class:list={[className]} />
-  <Icon name="teenyicons:youtube-outline" />
-  <a href="https://www.mongrandlombre.com/" title="Mon grand l'ombre" target="_blank"
-    ><Icon name="mongrandlombre" /></a
-  >
+  <a href="https://www.facebook.com/rockontheloule" title="Association Rock On The l'Oule" target="_blank"
+    ><Icon name="teenyicons:facebook-outline" class:list={[className]} /></a>
+ 
 </div>
 
 <style>
@@ -22,7 +20,7 @@ const { className } = Astro.props;
     height: 100%;
 
     &.socials_footer {
-      color: #454040;
+      color: #C68341;
       font-size: 40px;
       gap: 32px;
     }

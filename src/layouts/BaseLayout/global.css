@@ -21,6 +21,7 @@ body {
   margin: 0;
   color: var(--base-body-color);
   font-family: var(--font-sans);
+  font-weight: 400;
   font-size: rfs(18px);
   text-rendering: optimizeLegibility;
 
@@ -29,19 +30,16 @@ body {
 
 p {
   line-height: 28px;
-  color: white;
+  font-weight: 400;
+  letter-spacing: 0.4px;
   margin-bottom: rfs(16px);
   @media screen and (max-width: 600px) {
     line-height: 26px;
   }
 }
 
-.gallery {
-  display: flex;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 8px;
-  grid-template-rows: auto;
-  position: relative;
+* > strong {
+  font-weight: 700;
 }
 
 img,
@@ -79,11 +77,21 @@ h6 {
   font-weight: 400;
 }
 
+h1 {
+  font-weight:900;
+  padding-bottom:rfs(2rem);
+ 
+}
+h2 {
+  padding-bottom:rfs(1rem);
+   font-weight:600;
+}
+
 ::-moz-selection {
-  background: #f4cf58;
+  background: #eee7d2;
 }
 ::selection {
-  background: #f4cf58;
+  background: #eee7d2;
 }
 
 mark {
@@ -267,3 +275,153 @@ blockquote footer {
     transition-timing-function: step-end;
   }
 }
+
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: rfs(16px);
+  grid-template-rows: auto;
+  position: relative;
+  align-items: center;
+  @media screen and (max-width: 768px) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  img {
+    border-radius: rfs(16px);
+  }
+}
+
+.button_cta {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  z-index: 1;
+  width: fit-content;
+  padding: 1.2rem 2rem;
+  outline: none;
+  text-decoration: none;
+  position: relative;
+  letter-spacing: 0.4px;
+  font-size: 20px;
+  font-weight: 500;
+  background-color: var(--color-yellow);
+  color: var(--color-blue-dark);
+  border-radius: 16px;
+  border:1px solid white;
+  &:hover {
+    background-color: #ffd267;
+  }
+  svg {
+    font-size: 24px;
+  }
+}
+
+.blue {
+  background-color: var(--color-blue-dark);
+  color: var(--color-white);
+  &:hover {
+    background-color: var(--color-blue);
+  }
+}
+
+#homepage_soins {
+  min-height: 100vh;
+  text-align: center;
+  position: relative;
+  display: flex;
+  align-items: center;
+  .grid figure .picture img {
+    border-radius: 50%;
+    max-width: 300px !important;
+  }
+  .grid {
+    .deco {
+      overflow: hidden;
+      display: block;
+      position: absolute;
+      opacity: 0.2;
+      top: 0;
+      left: 0;
+      width: 60%;
+      height: 100%;
+      @media screen and (max-width: 1024px) {
+        width: 100%;
+        height: 70%;
+      }
+    }
+  }
+
+  .mainColonne {
+    /*aspect-ratio: 1.11;*/
+    clip-path: shape(
+      from 83.84% 0.66%,
+      curve to 92.82% 89.27% with 103.21% 3.89%/103.8% 72.82%,
+      curve to 30.92% 96.44% with 81.84% 105.71%/72.97% 99.05%,
+      curve to 21.84% 8.8% with -11.13% 93.82%/-6.38% 10.47%,
+      curve to 83.84% 0.66% with 50.06% 7.12%/64.47% -2.58%,
+      close
+    );
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    background-color: var(--color-yellow);
+    margin: 0 auto;
+    padding: rfs(4rem) rfs(5rem);
+
+    & h1 {
+      color: var(--color-blue-dark);
+      text-transform: none;
+      padding-bottom: 1rem;
+    }
+    & h2 {
+      color: var(--color-blue-dark);
+    }
+  }
+  .premiereColonne {
+    text-align: center;
+    align-items: center;
+  }
+}
+
+#homepage_bulle_double {
+  .mainColonne {
+    padding-top: rfs(20px);
+    @media screen and (max-width: 900px) {
+      padding-top: 0;
+    }
+  }
+}
+#homepage_contact {
+  .mainColonne {
+    display: flex;
+    flex-direction: column;
+    padding-top: rfs(60px);
+    gap: rfs(16px);
+    align-items: center;
+  }
+  figure {
+    margin: 0 auto;
+  }
+  text-align: center;
+}
+
+/* Hack second menu de la homepage en mode mobile
+ => on le desactive
+@media screen and (max-width: 1272px) {
+  #hidingHeaderStaticTransparent ~ #site > #hidingHeader {
+    display: none;
+  }
+}
+ */
+
+ /* Liste de hastags (subtitle) de la liste de vignette artiste */
+ .hashtags_list {
+display:flex;
+
+    flex-wrap: wrap;
+gap:rfs(8px);
+font-size:16px;
+list-style:none;
+padding:0;
+
+ }
