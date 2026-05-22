@@ -3,8 +3,7 @@ import type { BuildSitemapUrlsFn } from '~/pages/sitemap.xml';
 import {
   ArtisteUrlFragment,
   buildUrlForArtiste,
-  buildUrlForNews,
-} from '~/lib/datocms/gqlUrlBuilder/news';
+} from '~/lib/datocms/gqlUrlBuilder/artiste';
 import { executeQueryOutsideAstro } from '~/lib/datocms/executeQuery';
 
 // SITEMAP
