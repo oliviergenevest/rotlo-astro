@@ -17,14 +17,10 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [
-      bundlesize({
-        limits: [{ name: '**/*', limit: '500 kB' }],
-        stats: 'summary',
-      }),
-    ],
+ 
+  
     build: {
-      sourcemap: true,
+      sourcemap: 'hidden',
     },
   },
 
@@ -68,7 +64,6 @@ export default defineConfig({
     validateSecrets: true,
   },
 
-  site: 'https://http://localhost:4321',
 
   integrations: [
     react(),
