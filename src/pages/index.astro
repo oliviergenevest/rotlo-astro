@@ -13,7 +13,7 @@ import { SectionBlockFragment } from '~/components/blocks/SectionBlock/fragments
 
 import { Wrapper } from '~/components/Wrapper';
 import { Title } from '~/components/Title';
-import { fade } from 'astro:transitions';
+import { fade, slide } from 'astro:transitions';
 
 /**
  * The GraphQL query that will be executed for this route to generate the homepage
@@ -62,22 +62,12 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
 ---
 
 <Layout additionalSeo={homepage._seoMetaTags}>
-  <!-- Fade transition with a duration of 400 milliseconds -->
-  <div transition:animate={fade({ duration: '2.4s' })}>
-    <br />
-    TEST
-    <h1>sdgdfsgdfg dfhfghsgfhgsfh</h1>
-    <p>
-      oihlskqwdfskdf sdlfhv hxldfh vlxdh ldfh vmsdfh mseihm wsdosid eis ss eùes es ùoswe toswt psowj
-      ù
-    </p>
-    <br />
-  </div>
+  
   <div class="section_cta" style={`--urlimg: url('${optimizedBgImage.src}');`}>
     <Wrapper> <div class="content fade-in-bottom" set:html={homepage.ctaText} /></Wrapper>
   </div>
   <Wrapper class="wrapper homepage" bgcolor={homepage.backgroundColor?.hex}>
-    {homepage.sections.map((item) => <SectionBlock block={item} />)}
+    {homepage.sections.map((item) => <SectionBlock block={item} transition:animate={slide({ duration: '2.4s' })} />)}
   </Wrapper>
 
   <!--<div>Published at {homepage._firstPublishedAt}</div> -->

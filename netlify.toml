@@ -1,5 +1,5 @@
 [build]
   publish = "dist"
-  command = "npm run build"
+  command = "npx astro add netlify --yes && npm install && npm run build"
 [functions]
  node_bundler= "esbuild"
