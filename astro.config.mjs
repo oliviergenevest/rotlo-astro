@@ -19,12 +19,7 @@ export default defineConfig({
   },
 
   vite: {
-    plugins: [
-      bundlesize({
-        limits: [{ name: '**/*', limit: '500 kB' }],
-        stats: 'summary',
-      }),
-    ],
+  
     build: {
       sourcemap: 'hidden',
     },
