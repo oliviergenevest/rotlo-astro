@@ -30,7 +30,7 @@ const image = data.image ? data.image.responsiveImage : data.cardImage.responsiv
 ---
 
 <div class="card">
-  {data.__typename === 'MemberRecord' ? <a data-modal-trigger={data.slug} /> : <a href={path} />}
+  {data.__typename === 'MemberRecord' ? <a data-modal-trigger={data.slug} /> : <a href={path} title={data.title}/>}
   {data.badgeLabel && <div class="card_badge">{data.badgeLabel}</div>}
   <div class="card_image">
     {
