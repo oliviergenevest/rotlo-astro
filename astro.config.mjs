@@ -7,9 +7,7 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  //site: 'https://cdo-astro.netlify.app',
-  site: 'https://http://localhost:4321',
-
+  site: 'https://cdo-astro.netlify.app',
   output: 'server',
   trailingSlash: 'never',
   base: '/',
@@ -19,7 +17,6 @@ export default defineConfig({
   },
 
   vite: {
-  
     build: {
       sourcemap: 'hidden',
     },
