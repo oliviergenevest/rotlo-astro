@@ -3,11 +3,13 @@ import icon from 'astro-icon';
 import react from '@astrojs/react';
 import bundlesize from 'vite-plugin-bundlesize';
 
+import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
   //site: 'https://cdo-astro.netlify.app',
   site: 'https://http://localhost:4321',
+
   output: 'server',
   trailingSlash: 'never',
   base: '/',
@@ -17,7 +19,7 @@ export default defineConfig({
   },
 
   vite: {
-     plugins: [
+    plugins: [
       bundlesize({
         limits: [{ name: '**/*', limit: '500 kB' }],
         stats: 'summary',
@@ -83,5 +85,5 @@ export default defineConfig({
     remotePatterns: [{ protocol: 'https' }],
   },
 
- 
+  adapter: netlify(),
 });

@@ -62,12 +62,15 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
 ---
 
 <Layout additionalSeo={homepage._seoMetaTags}>
-  
   <div class="section_cta" style={`--urlimg: url('${optimizedBgImage.src}');`}>
     <Wrapper> <div class="content fade-in-bottom" set:html={homepage.ctaText} /></Wrapper>
   </div>
   <Wrapper class="wrapper homepage" bgcolor={homepage.backgroundColor?.hex}>
-    {homepage.sections.map((item) => <SectionBlock block={item} transition:animate={slide({ duration: '2.4s' })} />)}
+    {
+      homepage.sections.map((item) => (
+        <SectionBlock block={item} transition:animate={slide({ duration: '2.4s' })} />
+      ))
+    }
   </Wrapper>
 
   <!--<div>Published at {homepage._firstPublishedAt}</div> -->
