@@ -33,7 +33,7 @@ export const fetchSitemapUrls = async (request: Request, responseHeaders: Header
           const graphqlPath =
             astroFilePath.replace('.astro', '').replace('/[slug]', '') + '/_graphql.ts';
 
-          // console.log("astroFilePath",astroFilePath);
+           console.log("astroFilePath",astroFilePath);
           // console.log( "replaced", astroFilePath.replace('.astro', '').replace('/[slug]', '') + '/_graphql.ts');
 
           const buildSitemapUrlsFnPromise = allBuildSitemapUrls[graphqlPath];
