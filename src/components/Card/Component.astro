@@ -50,9 +50,8 @@ const image = data.image ? data.image.responsiveImage : data.cardImage.responsiv
   </div>
   <div class="content">
     <Title as="h2" class:list={['card_title', 'h2']} transition:name={`title-${data.slug}`}
-      >{data.title}</Title>
-      
-     
+      >{data.title}</Title
+    >
 
     {subtitle && <div class="subtitle" set:html={subtitle} />}
     {
@@ -162,7 +161,7 @@ const image = data.image ? data.image.responsiveImage : data.cardImage.responsiv
     color: var(--color-yellow);
     /*color: #0f4473;*/
     font-size: rfs(16px);
-    
+
     & li {
       padding: 0.5rem 1rem;
       border-radius: 8px;

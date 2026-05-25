@@ -22,7 +22,7 @@ import { VideoBlockFragment } from '~/components/blocks/VideoBlock/fragments';
 import { ImageBlock } from '~/components/blocks/ImageBlock';
 import { ResponsiveImageFragment } from '~/components/ResponsiveImage/fragments';
 
-import { VideoPlayer} from '~/components/VideoPlayer/';
+import { VideoPlayer } from '~/components/VideoPlayer/';
 
 import { ImageGalleryBlock } from '~/components/blocks/ImageGalleryBlock';
 import { ImageGalleryBlockFragment } from '~/components/blocks/ImageGalleryBlock/fragments';
@@ -52,7 +52,7 @@ const query = graphql(
         description
         slug
         video {
-           url
+          url
         }
         websiteUrl
         instagramUrl
@@ -88,34 +88,45 @@ if (!artiste) {
 <Layout additionalSeo={artiste._seoMetaTags} backgroundColor="var(--color-cream)">
   <Wrapper class="wrapper wide">
     <Title transition:name={`title-${artiste.slug}`} class="title h1">{artiste.title}</Title>
-<div class="grid_artiste">
-    
-      {artiste.video && <div class="artiste_video">
-        <YouTube id={artiste.video.url} /> 
-        </div>
+    <div class="grid_artiste">
+      {
+        artiste.video && (
+          <div class="artiste_video">
+            <YouTube id={artiste.video.url} />
+          </div>
+        )
       }
-    
-    
-      
-    <div class="artiste_description" set:html={artiste.description} />
-   </div>
-     <div class="artiste_socials">
-        {artiste.websiteUrl &&	<a href={artiste.websiteUrl} target="_blank" rel="noopener noreferrer">Site internet</a> 
-        }
-        {artiste.facebookUrl &&
-        <a href={artiste.facebookUrl} target="_blank" rel="noopener noreferrer">Page Facebook</a> 
-        }
-        {artiste.instagramUrl &&
-          <a href={artiste.instagramUrl} target="_blank" rel="noopener noreferrer">Page Instagram</a>
-        }
-  
-      </div> 
+
+      <div class="artiste_description" set:html={artiste.description} />
+    </div>
+    <div class="artiste_socials">
+      {
+        artiste.websiteUrl && (
+          <a href={artiste.websiteUrl} target="_blank" rel="noopener noreferrer">
+            Site internet
+          </a>
+        )
+      }
+      {
+        artiste.facebookUrl && (
+          <a href={artiste.facebookUrl} target="_blank" rel="noopener noreferrer">
+            Page Facebook
+          </a>
+        )
+      }
+      {
+        artiste.instagramUrl && (
+          <a href={artiste.instagramUrl} target="_blank" rel="noopener noreferrer">
+            Page Instagram
+          </a>
+        )
+      }
+    </div>
     <ResponsiveImage
       transition:name={`image-${artiste.slug}`}
       data={artiste.image.responsiveImage}
       imgClass="rounded"
     />
-  
   </Wrapper>
 </Layout>
 
@@ -135,25 +146,23 @@ if (!artiste) {
     margin-bottom: 0;
     padding-bottom: 0;
   }
-.grid_artiste {
-  display:grid;
-      grid-template-columns: 1fr 1fr;
+  .grid_artiste {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
     align-items: start;
     gap: rfs(32px);
-padding:1rem;
-@media screen and (max-width: 800px) {
-     grid-template-columns: 1fr;
+    padding: 1rem;
+    @media screen and (max-width: 800px) {
+      grid-template-columns: 1fr;
+    }
   }
-}
   .artiste_video {
-    width:100%;
-    max-width:600px;
-   
+    width: 100%;
+    max-width: 600px;
   }
-  .artiste_socials{
-    padding:rfs(5rem) rfs(2rem) ;
-    color:white;
-   
+  .artiste_socials {
+    padding: rfs(5rem) rfs(2rem);
+    color: white;
   }
 
   .artiste_description {
@@ -162,7 +171,7 @@ padding:1rem;
     line-height: 66px;
     max-width: 600px;
     font-weight: 400;
-  
-    hyphens:none;
+
+    hyphens: none;
   }
 </style>

@@ -8,5 +8,6 @@ export const PageUrlFragment = graphql(/* GraphQL */ `
 
 export function buildUrlForPage(page: FragmentOf<typeof PageUrlFragment>) {
   const data = readFragment(PageUrlFragment, page);
+  //console.log("data page.ts:", data);
   return `/${data.slug}`;
 }
