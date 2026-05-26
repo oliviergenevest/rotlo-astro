@@ -97,11 +97,11 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
   .link--metis::before {
     content: '';
     position: absolute;
-    width: 80%;
+    width: 100%;
     height: 2px;
     background: var(--color-yellow);
     top: 100%;
-    left: 10%;
+    left: 0;
     pointer-events: none;
     transform-origin: 100% 50%;
     transform: scale3d(0, 1, 1);
@@ -125,7 +125,7 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     width: 0;
     overflow: hidden;
     height: 100vh;
-    background-color: var(--dark-bg-color);
+    background-color: #0f475f;
 
     transition: all 0.15s ease-in;
     ul {
@@ -143,7 +143,7 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     }
 
     &.expanded {
-      width: 250px;
+      width: 350px;
       height: 100vh;
 
       transition: width 0.2s ease-in-out;

@@ -68,7 +68,7 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
   <Wrapper class="wrapper homepage" bgcolor={homepage.backgroundColor?.hex}>
     {
       homepage.sections.map((item) => (
-        <SectionBlock block={item} transition:animate={slide({ duration: '2.4s' })} />
+        <SectionBlock transition:animate={slide({ duration: "0.4s" })}  block={item} transition:animate={slide({ duration: '2.4s' })} />
       ))
     }
   </Wrapper>
@@ -87,7 +87,7 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
     background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.15)), var(--urlimg);
     background-size: cover;
     background-repeat: no-repeat;
-    background-position: center center;
+    background-position: left center;
     /* margin-bottom: 30px;*/
   }
 

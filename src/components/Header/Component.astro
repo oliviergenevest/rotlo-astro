@@ -13,7 +13,7 @@ type Props = {
 const customClass = Astro.props.class;
 ---
 
-<div class="hidingHeader" id={customClass ? 'hidingHeader' : 'hidingHeader'}>
+<div class="hidingHeader" id={customClass ? 'hidingHeader' : 'hidingHeader'}  transition:name="main-nav">
   <div class:list={['header hidingHeader-in', customClass]} class="header hidingHeader-in">
     <a href="/" title="Page d'accueil">
       {
@@ -25,12 +25,12 @@ const customClass = Astro.props.class;
       }
     </a>
     <NavigationMobile />
-    <Slide client:only="react" duration={1000} delay={80} top distance="16px">
+ <!--  <Slide client:only="react" duration={1000} delay={80} top distance="16px">
       <Fade client:only="react" duration={800} delay={0}>
         <Navigation />
       </Fade>
-    </Slide>
-    <a href="tel:0475539737" class="button_cta">
+    </Slide> --> 
+    <a href="festival-champ-des-ondes-2026#billetterie" class="button_cta">
       <Icon class="icon" name="ticket" title="Billetterie en ligne" /> BILLETTERIE
     </a>
     <Hamburger />
@@ -38,9 +38,10 @@ const customClass = Astro.props.class;
 </div>
 
 <style>
-  [data-icon='brand-logo'],
+ 
   [data-icon='brand-logo'] {
     font-size: rfs(4.48rem);
+
     max-width: 100%;
   }
   [data-icon='ticket'] {
@@ -49,8 +50,8 @@ const customClass = Astro.props.class;
   }
 
   .header {
-    /*box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;*/
-    background-color: var(--color-blue);
+    box-shadow: rgba(0, 0, 0, 0.24) 0px 3px 8px;
+    background-color:  white;
     display: flex;
     justify-content: space-between;
     align-items: center;

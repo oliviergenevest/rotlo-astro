@@ -203,6 +203,8 @@ if (!news) {
         />
       </div>
     </div>
+     <a href="../news" class="fleche_nav"> 🡸 retour aux news </a>
+
   </Wrapper>
 </Layout>
 
@@ -210,7 +212,17 @@ if (!news) {
   body {
     background-color: var(--color-blue-dark);
   }
-
+ .fleche_nav{
+      padding:4rem;
+      color: white;
+      padding-top:0;
+      font-size:2rem;
+      text-decoration:none;
+      transition:color .8s;
+       &:hover {
+         color:#ffca4d;
+      }
+  }
   .title.h1 span :global(p) {
     margin-bottom: 0;
     padding-bottom: 0;
@@ -237,6 +249,7 @@ if (!news) {
   }
 
   .grid_main {
+        border-radius: 8px;
     background-color: var(--color-yellow);
     padding: 32px;
     display: flex;
@@ -274,6 +287,7 @@ if (!news) {
     gap: 8px;
     background-color: var(--color-white);
     border-top: 4px solid var(--color-yellow);
+        border-radius: 8px;
     padding: 32px;
     @media (max-width: 750px) {
       padding: 16px;
