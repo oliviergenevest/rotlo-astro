@@ -64,8 +64,8 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     }
   </ul>
   <a href="festival-champ-des-ondes-2026#billetterie" class="button_cta">
-      <Icon class="icon" name="ticket" title="Billetterie en ligne" /> BILLETTERIE
-    </a>
+    <Icon class="icon" name="ticket" title="Billetterie en ligne" /> BILLETTERIE
+  </a>
 </nav>
 <div class="overlay"></div>
 <style>
@@ -82,21 +82,21 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
   li {
     padding: rfs(16px);
   }
-  li a, li a:hover {
+  li a,
+  li a:hover {
     font-family: var(--font-headline);
     font-size: 22px;
-   
+
     text-decoration: none;
     position: relative;
     padding-bottom: 4px;
   }
 
- li a[aria-current='page']::before {
+  li a[aria-current='page']::before {
     /* the styles for the active nav item */
     transform-origin: 0% 50%;
     transform: scale3d(1, 1, 1);
   }
-
 
   .link--metis::before {
     content: '';
@@ -143,8 +143,8 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     }
 
     .button_cta {
-          margin-left: 5rem;
-    margin-top: 2rem;
+      margin-left: 5rem;
+      margin-top: 2rem;
     }
 
     .btn_close {

@@ -36,16 +36,7 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
 
 <nav class="desktop_nav">
   <ul>
-    <li>
-      <a
-        href="/"
-        title="Accueil"
-        class:list={'link--metis'}
-        aria-current={pathSlug === '' ? 'page' : 'false'}
-      >
-        Accueil
-      </a>
-    </li>
+   
     {
       allNavigations.map((item) => (
         <li>
@@ -65,9 +56,9 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
 
 <style>
   nav.desktop_nav {
-    display: none;
+    display: block;
   }
-  @media screen and (max-width: 1024px) {
+  @media screen and (max-width: 1324px) {
     nav.desktop_nav {
       display: none;
     }
@@ -82,15 +73,26 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
   li {
     padding: rfs(16px);
   }
-  a,
-  a:hover {
+  a {
     font-family: var(--font-headline);
-    font-size: rfs(24px);
-    color: var(--color-darkblue);
+    font-size: rfs(22px);
+    color: var(--color-black);
     text-decoration: none;
     position: relative;
     padding-bottom: 4px;
-    text-transform: lowercase;
+    text-transform: capitalize;
+    font-weight:500;
+  }
+  
+  a:hover {
+    font-family: var(--font-headline);
+    font-size: rfs(22px);
+    color: var(--color-blue-dark);
+    text-decoration: none;
+    position: relative;
+    padding-bottom: 4px;
+    text-transform: capitalize;
+     font-weight:500;
   }
 
   a[aria-current='page']::before {
