@@ -87,10 +87,9 @@ if (!artiste) {
 
 <Layout additionalSeo={artiste._seoMetaTags} backgroundColor="var(--color-cream)">
   <Wrapper class="wrapper wide">
-   
     <a href="../festival-champ-des-ondes-2026#programmation" class="fleche_nav"> 🡸 retour</a>
     <Title transition:name={`title-${artiste.slug}`} class="title h1">{artiste.title}</Title>
-  
+
     <div class="grid_artiste">
       {
         artiste.video && (
@@ -130,9 +129,11 @@ if (!artiste) {
       data={artiste.image.responsiveImage}
       imgClass="rounded"
     />
-   
-        <a href="../festival-champ-des-ondes-2026#programmation" class="fleche_nav"> 🡸 retour à la programmation </a>
- <br>
+
+    <a href="../festival-champ-des-ondes-2026#programmation" class="fleche_nav">
+      🡸 retour à la programmation
+    </a>
+    <br />
   </Wrapper>
 </Layout>
 
@@ -140,16 +141,16 @@ if (!artiste) {
   body {
     background-color: var(--color-blue-dark);
   }
-  .fleche_nav{
-      padding:4rem;
-      color: white;
-      padding-bottom:0;
-      font-size:2rem;
-      text-decoration:none;
-      transition:color .8s;
-       &:hover {
-         color:#ffca4d;
-      }
+  .fleche_nav {
+    padding: 4rem;
+    color: white;
+    padding-bottom: 0;
+    font-size: 2rem;
+    text-decoration: none;
+    transition: color 0.8s;
+    &:hover {
+      color: #ffca4d;
+    }
   }
   .title {
     font-size: rfs(56px);

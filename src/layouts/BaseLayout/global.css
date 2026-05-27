@@ -424,8 +424,7 @@ blockquote footer {
   padding: 0;
 }
 
-
 /* Optimize transition performance */
-[ transition:name] {
+[transition:name] {
   will-change: transform;
 }

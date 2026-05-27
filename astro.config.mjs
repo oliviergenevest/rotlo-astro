@@ -7,7 +7,7 @@ import netlify from '@astrojs/netlify';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://cdo-astro.netlify.app',
+  site: 'https://rockontheloule.org',
   output: 'server',
   trailingSlash: 'never',
   base: '/',

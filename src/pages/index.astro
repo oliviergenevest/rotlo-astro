@@ -68,7 +68,11 @@ const optimizedBgImage = await getImage({ src: homepage.backgroundImage.url, inf
   <Wrapper class="wrapper homepage" bgcolor={homepage.backgroundColor?.hex}>
     {
       homepage.sections.map((item) => (
-        <SectionBlock transition:animate={slide({ duration: "0.4s" })}  block={item} transition:animate={slide({ duration: '2.4s' })} />
+        <SectionBlock
+          transition:animate={slide({ duration: '0.4s' })}
+          block={item}
+          transition:animate={slide({ duration: '2.4s' })}
+        />
       ))
     }
   </Wrapper>

@@ -4,6 +4,7 @@ import { executeQuery } from '~/lib/datocms/executeQuery';
 import { isDraftModeEnabled } from '~/lib/draftMode';
 import { DraftModeQueryListener } from '~/components/DraftModeQueryListener';
 import { Wrapper } from '~/components/Wrapper';
+import { Icon } from 'astro-icon/components';
 
 const query = graphql(/* GraphQL */ `
   query NavigationQuery {
@@ -62,6 +63,9 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
       ))
     }
   </ul>
+  <a href="festival-champ-des-ondes-2026#billetterie" class="button_cta">
+      <Icon class="icon" name="ticket" title="Billetterie en ligne" /> BILLETTERIE
+    </a>
 </nav>
 <div class="overlay"></div>
 <style>
@@ -78,21 +82,21 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
   li {
     padding: rfs(16px);
   }
-  a,
-  a:hover {
+  li a, li a:hover {
     font-family: var(--font-headline);
     font-size: 22px;
-    color: var(--color-darkblue);
+   
     text-decoration: none;
     position: relative;
     padding-bottom: 4px;
   }
 
-  a[aria-current='page']::before {
+ li a[aria-current='page']::before {
     /* the styles for the active nav item */
     transform-origin: 0% 50%;
     transform: scale3d(1, 1, 1);
   }
+
 
   .link--metis::before {
     content: '';
@@ -136,6 +140,11 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
       a:hover {
         color: var(--color-white);
       }
+    }
+
+    .button_cta {
+          margin-left: 5rem;
+    margin-top: 2rem;
     }
 
     .btn_close {
