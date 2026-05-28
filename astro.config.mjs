@@ -5,6 +5,11 @@ import bundlesize from 'vite-plugin-bundlesize';
 
 import netlify from '@astrojs/netlify';
 
+
+/*
+
+*/
+
 // https://astro.build/config
 export default defineConfig({
   site: 'https://rockontheloule.org',

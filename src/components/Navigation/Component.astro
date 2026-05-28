@@ -36,7 +36,6 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
 
 <nav class="desktop_nav">
   <ul>
-   
     {
       allNavigations.map((item) => (
         <li>
@@ -81,9 +80,9 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     position: relative;
     padding-bottom: 4px;
     text-transform: capitalize;
-    font-weight:500;
+    font-weight: 500;
   }
-  
+
   a:hover {
     font-family: var(--font-headline);
     font-size: rfs(22px);
@@ -92,7 +91,7 @@ const pathSlug = pathname.replace(/\/$/, '').slice(1);
     position: relative;
     padding-bottom: 4px;
     text-transform: capitalize;
-     font-weight:500;
+    font-weight: 500;
   }
 
   a[aria-current='page']::before {

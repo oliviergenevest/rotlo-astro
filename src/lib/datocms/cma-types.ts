@@ -166,6 +166,30 @@ export const Social = {
   REF: { type: 'item_type', id: 'OMYS36gxRwa1tDwDsHe1Cg' },
 } as const;
 
+export type Hashtag = ItemTypeDefinition<
+  EnvironmentSettings,
+  'OUXoCQxZSs-gNh3_zi9jIw',
+  {
+    name: {
+      type: 'string';
+    };
+  }
+>;
+export const Hashtag = {
+  ID: 'OUXoCQxZSs-gNh3_zi9jIw',
+  REF: { type: 'item_type', id: 'OUXoCQxZSs-gNh3_zi9jIw' },
+} as const;
+
+export type IframeBilletterie = ItemTypeDefinition<
+  EnvironmentSettings,
+  'O7E7_pLYR4C3iX0qAZgrbg',
+  {}
+>;
+export const IframeBilletterie = {
+  ID: 'O7E7_pLYR4C3iX0qAZgrbg',
+  REF: { type: 'item_type', id: 'O7E7_pLYR4C3iX0qAZgrbg' },
+} as const;
+
 export type OlivBlock = ItemTypeDefinition<
   EnvironmentSettings,
   'PvdKSAiJQuS05TbVjj-8aw',
@@ -213,6 +237,67 @@ export type Agenda = ItemTypeDefinition<
 export const Agenda = {
   ID: 'RT2noqDTS-KiUbE-nPeO9Q',
   REF: { type: 'item_type', id: 'RT2noqDTS-KiUbE-nPeO9Q' },
+} as const;
+
+export type Artiste = ItemTypeDefinition<
+  EnvironmentSettings,
+  'Uf5dPveOSXmWNFstjMYwaA',
+  {
+    title: {
+      type: 'string';
+    };
+    description: {
+      type: 'text';
+    };
+    image: {
+      type: 'file';
+    };
+    video: {
+      type: 'video';
+    };
+    hashtag_liste: {
+      type: 'links';
+    };
+    website_url: {
+      type: 'string';
+    };
+    facebook_url: {
+      type: 'string';
+    };
+    instagram_url: {
+      type: 'string';
+    };
+    slug: {
+      type: 'slug';
+    };
+  }
+>;
+export const Artiste = {
+  ID: 'Uf5dPveOSXmWNFstjMYwaA',
+  REF: { type: 'item_type', id: 'Uf5dPveOSXmWNFstjMYwaA' },
+} as const;
+
+export type ButtonBlock = ItemTypeDefinition<
+  EnvironmentSettings,
+  'VODPKvajTCyuhtbzrgxVbg',
+  {
+    label: {
+      type: 'string';
+    };
+    target_url: {
+      type: 'string';
+    };
+    external: {
+      type: 'boolean';
+    };
+    icon: {
+      type: 'string';
+    };
+  }
+>;
+export const ButtonBlock = {
+  ID: 'VODPKvajTCyuhtbzrgxVbg',
+  REF: { type: 'item_type', id: 'VODPKvajTCyuhtbzrgxVbg' },
 } as const;
 
 export type Homepage = ItemTypeDefinition<
@@ -266,6 +351,36 @@ export type Navigation = ItemTypeDefinition<
 export const Navigation = {
   ID: 'W-p7tJJbQHWHgqxtHp-c3g',
   REF: { type: 'item_type', id: 'W-p7tJJbQHWHgqxtHp-c3g' },
+} as const;
+
+export type ButtonsListBlock = ItemTypeDefinition<
+  EnvironmentSettings,
+  'YigEO7WZTWyiHkkTIszgEw',
+  {
+    items: {
+      type: 'rich_text';
+      blocks: ButtonBlock;
+    };
+  }
+>;
+export const ButtonsListBlock = {
+  ID: 'YigEO7WZTWyiHkkTIszgEw',
+  REF: { type: 'item_type', id: 'YigEO7WZTWyiHkkTIszgEw' },
+} as const;
+
+export type SlideshowBlock = ItemTypeDefinition<
+  EnvironmentSettings,
+  'ZEduT1uPQXaAnUF_67-WiA',
+  {
+    items: {
+      type: 'rich_text';
+      blocks: ImageTextBlock;
+    };
+  }
+>;
+export const SlideshowBlock = {
+  ID: 'ZEduT1uPQXaAnUF_67-WiA',
+  REF: { type: 'item_type', id: 'ZEduT1uPQXaAnUF_67-WiA' },
 } as const;
 
 export type ItemsListBlock = ItemTypeDefinition<
@@ -474,58 +589,6 @@ export const Footer = {
   REF: { type: 'item_type', id: 'fQVCHtyTTteLT5e1rbXAGg' },
 } as const;
 
-export type Artiste = ItemTypeDefinition<
-  EnvironmentSettings,
-  'Uf5dPveOSXmWNFstjMYwaA',
-  {
-    title: {
-      type: 'string';
-    };
-    description: {
-      type: 'text';
-    };
-    image: {
-      type: 'file';
-    };
-    video: {
-      type: 'video';
-    };
-    hashtag_liste: {
-      type: 'links';
-    };
-    website_url: {
-      type: 'string';
-    };
-    facebook_url: {
-      type: 'string';
-    };
-    instagram_url: {
-      type: 'string';
-    };
-    slug: {
-      type: 'slug';
-    };
-  }
->;
-export const Artiste = {
-  ID: 'Uf5dPveOSXmWNFstjMYwaA',
-  REF: { type: 'item_type', id: 'Uf5dPveOSXmWNFstjMYwaA' },
-} as const;
-
-export type Hashtag = ItemTypeDefinition<
-  EnvironmentSettings,
-  'OUXoCQxZSs-gNh3_zi9jIw',
-  {
-    name: {
-      type: 'string';
-    };
-  }
->;
-export const Hashtag = {
-  ID: 'OUXoCQxZSs-gNh3_zi9jIw',
-  REF: { type: 'item_type', id: 'OUXoCQxZSs-gNh3_zi9jIw' },
-} as const;
-
 export type SectionBlock = ItemTypeDefinition<
   EnvironmentSettings,
   'fbnjAV5BQaWbojYp-tEtkQ',
@@ -539,6 +602,7 @@ export type SectionBlock = ItemTypeDefinition<
         | VideoEmbedBlock
         | ImageGalleryBlock
         | ImageTextBlock
+        | IframeBilletterie
         | ButtonBlock
         | ButtonsListBlock
         | SlideshowBlock
@@ -566,59 +630,6 @@ export const SectionBlock = {
   REF: { type: 'item_type', id: 'fbnjAV5BQaWbojYp-tEtkQ' },
 } as const;
 
-export type ButtonsListBlock = ItemTypeDefinition<
-  EnvironmentSettings,
-  'YigEO7WZTWyiHkkTIszgEw',
-  {
-    items: {
-      type: 'rich_text';
-      blocks: ButtonBlock;
-    };
-  }
->;
-export const ButtonsListBlock = {
-  ID: 'YigEO7WZTWyiHkkTIszgEw',
-  REF: { type: 'item_type', id: 'YigEO7WZTWyiHkkTIszgEw' },
-} as const;
-
-export type ButtonBlock = ItemTypeDefinition<
-  EnvironmentSettings,
-  'VODPKvajTCyuhtbzrgxVbg',
-  {
-    label: {
-      type: 'string';
-    };
-    target_url: {
-      type: 'string';
-    };
-    external: {
-      type: 'boolean';
-    };
-    icon: {
-      type: 'string';
-    };
-  }
->;
-export const ButtonBlock = {
-  ID: 'VODPKvajTCyuhtbzrgxVbg',
-  REF: { type: 'item_type', id: 'VODPKvajTCyuhtbzrgxVbg' },
-} as const;
-
-export type SlideshowBlock = ItemTypeDefinition<
-  EnvironmentSettings,
-  'ZEduT1uPQXaAnUF_67-WiA',
-  {
-    items: {
-      type: 'rich_text';
-      blocks: ImageTextBlock;
-    };
-  }
->;
-export const SlideshowBlock = {
-  ID: 'ZEduT1uPQXaAnUF_67-WiA',
-  REF: { type: 'item_type', id: 'ZEduT1uPQXaAnUF_67-WiA' },
-} as const;
-
 export type AnyBlock =
   | MenuDropdown
   | VideoEmbedBlock
@@ -627,26 +638,27 @@ export type AnyBlock =
   | ImageTextBlock
   | MenuItem
   | LogoBlock
+  | IframeBilletterie
   | OlivBlock
+  | ButtonBlock
+  | ButtonsListBlock
+  | SlideshowBlock
   | ItemsListBlock
   | AgendaBlock
   | LogosListBlock
   | ImageBlock
   | VideoBlock
-  | SectionBlock
-  | ButtonsListBlock
-  | ButtonBlock
-  | SlideshowBlock;
+  | SectionBlock;
 export type AnyModel =
   | Page
   | Social
+  | Hashtag
   | Agenda
+  | Artiste
   | Homepage
   | Navigation
   | Spectacle
   | Member
   | News
-  | Footer
-  | Artiste
-  | Hashtag;
+  | Footer;
 export type AnyBlockOrModel = AnyBlock | AnyModel;

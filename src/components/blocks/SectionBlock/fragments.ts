@@ -8,6 +8,7 @@ import { NewsInlineFragment } from '~/components/inlineRecord/NewsInline/fragmen
 import { SlideshowBlock } from '~/components/blocks/SlideshowBlock';
 import { SlideshowBlockFragment } from '~/components/blocks/SlideshowBlock/fragments';
 import { VideoEmbedBlockFragment } from '~/components/blocks/VideoEmbedBlock/fragments';
+import { IframeBilletterieFragment } from '~/components/blocks/IframeBilletterie/fragments';
 import { ImageTextBlock } from '~/components/blocks/ImageTextBlock';
 import { ImageTextBlockFragment } from '~/components/blocks/ImageTextBlock/fragments';
 
@@ -79,6 +80,9 @@ export const SectionBlockFragment = graphql(
             id
             __typename
           }
+          ...on IframeBilletterieRecord {
+            ...IframeBilletterieFragment
+          }
           ... on ItemsListBlockRecord {
             ...ItemsListBlockFragment
           }
@@ -136,5 +140,6 @@ export const SectionBlockFragment = graphql(
     LogosListBlockFragment,
     VideoEmbedBlockFragment,
     SlideshowBlockFragment,
+    IframeBilletterieFragment,
   ],
 );
