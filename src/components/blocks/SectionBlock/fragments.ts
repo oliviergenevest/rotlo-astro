@@ -80,7 +80,7 @@ export const SectionBlockFragment = graphql(
             id
             __typename
           }
-          ...on IframeBilletterieRecord {
+          ... on IframeBilletterieRecord {
             ...IframeBilletterieFragment
           }
           ... on ItemsListBlockRecord {
