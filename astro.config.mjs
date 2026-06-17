@@ -85,8 +85,10 @@ export default defineConfig({
    redirects: {
     '/archives/': '/asso',
     '/infos-pratiques/': '/festival-champ-des-ondes-2026#infos-pratiques',
-    '/infos-pratiques/': '/festival-champ-des-ondes-2026#programmation',
-    '/infos-pratiques/': '/festival-champ-des-ondes-2026#benevoles',
+    '/programmation/': '/festival-champ-des-ondes-2026#programmation',
+    '/billetterie/': '/festival-champ-des-ondes-2026#billetterie',
+    '/benevoles/': '/festival-champ-des-ondes-2026#benevoles',
     '/agenda/': '/news',
+    '/contacts/': '/contacts',
   },
 });
