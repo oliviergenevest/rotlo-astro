@@ -82,4 +82,11 @@ export default defineConfig({
   },
 
   adapter: netlify(),
+   redirects: {
+    '/archives/': '/asso',
+    '/infos-pratiques/': '/festival-champ-des-ondes-2026#infos-pratiques',
+    '/infos-pratiques/': '/festival-champ-des-ondes-2026#programmation',
+    '/infos-pratiques/': '/festival-champ-des-ondes-2026#benevoles',
+    '/agenda/': '/news',
+  },
 });
