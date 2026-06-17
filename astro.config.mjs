@@ -82,7 +82,7 @@ export default defineConfig({
   },
 
   adapter: netlify(),
-   redirects: {
+  redirects: {
     '/archives/': '/asso',
     '/infos-pratiques/': '/festival-champ-des-ondes-2026#infos-pratiques',
     '/programmation/': '/festival-champ-des-ondes-2026#programmation',
@@ -90,5 +90,12 @@ export default defineConfig({
     '/benevoles/': '/festival-champ-des-ondes-2026#benevoles',
     '/agenda/': '/news',
     '/contacts/': '/contacts',
+    '/agenda/assemblee-generale-a-la-salle-stephane-perrin/': '/news/assemblee-generale',
+    '/agenda/festival-le-champ-des-ondes/' : '/festival-champ-des-ondes-2026',
+    '/agenda/soiree-theatre-quand-viendra-la-vague/': '/news/soiree-theatre',
+    '/agenda/festival-rock-on-the-loule-2024/': '/festival-champ-des-ondes-2026',
+
+
+
   },
 });
